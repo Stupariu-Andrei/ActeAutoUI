@@ -1,0 +1,70 @@
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center">
+
+    <h1 class="logo me-auto"><a href=""><span>Acte</span>auto</a></h1>
+
+    <nav id="navbar" class="navbar order-last order-lg-0">
+      <ul>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="details" routerLinkActive="active-link">Acte necesare</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="about" routerLinkActive="active-link">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="contact" routerLinkActive="active-link">Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header-social-links" *ngIf="!loggedIn">
+      <a class="login-link" *ngIf = "!isLoggedIn()" routerLink="login" >LogIn</a>
+      <div class="dropdown">
+          <button class="btn dropdown-toggle" data-bs-toggle="dropdown" *ngIf="isLoggedIn()"><i class="fa fa-user" aria-hidden="true"></i><span class="user-name">{{user.username}}</span> </button>
+        <div class="dropdown-content">
+          <div class="profile">
+            <a class="dropdown-item d-flex align-items-center" routerLink="user-profile">
+              <i class="bi bi-person"></i>
+              <span>My Profile</span>
+            </a>
+          </div>
+          <div class="profile">
+            <hr class="dropdown-divider">
+          </div>
+
+          <div class="profile">
+            <a class="dropdown-item d-flex align-items-center" routerLink="user-profile">
+              <i class="bi bi-gear"></i>
+              <span>Account Settings</span>
+            </a>
+          </div>
+
+          <div class="profile">
+            <hr class="dropdown-divider">
+          </div>
+
+          <div class="profile">
+            <a class="dropdown-item d-flex align-items-center" href="">
+              <i class="bi bi-question-circle"></i>
+              <span>Need Help?</span>
+            </a>
+          </div>
+          <div class="profile">
+            <hr class="dropdown-divider">
+          </div>
+
+          <div class="profile" (click)="logOut()">
+            <a class="dropdown-item d-flex align-items-center" href="">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Sign Out</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</header>

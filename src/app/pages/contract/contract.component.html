@@ -1,0 +1,176 @@
+<div class="container">
+    <h1 class="text-center">Contract vanzare-cumparare</h1>
+    <!--Vanzator-->
+    <div class="form-control" name="vanzator">
+        <h2>Date vanzator</h2>
+        <div class="mb-3 row">
+            <label for="inputName" class="col-sm-2 col-form-label">Full name</label>
+            <div class="col-sm-10">
+                <input [(ngModel)]="vanzator.name" type="text" class="form-control" placeholder="name">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="inputSurname" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input [(ngModel)]="vanzator.email" type="text"  class="form-control" placeholder="email"/>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="inputSurname" class="col-sm-2 col-form-label">Phone</label>
+            <div class="col-sm-10">
+                <input [(ngModel)]="vanzator.phone" type="text"  class="form-control" placeholder="phone"/>
+            </div>
+        </div>
+        <div class="form-address">
+            <h2>Adresa</h2>
+            <div class="mb-3 row">
+                <label for="inputStrada" class="col-sm-2 col-form-label">Strada</label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="vanzator.strada" type="text" class="form-control" placeholder="strada">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputNumber" class="col-sm-2 col-form-label">Nr</label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="vanzator.numar" type="text" class="form-control" placeholder="numar strada">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputBloc" class="col-sm-2 col-form-label">Bloc</label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="vanzator.bloc" type="text" class="form-control" placeholder="bloc">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputScara" class="col-sm-2 col-form-label">Scara</label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="vanzator.scara" type="text" class="form-control" placeholder="scara">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputCod" class="col-sm-2 col-form-label">Etaj</label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="vanzator.etaj" type="text" class="form-control" placeholder="etaj">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputApartment" class="col-sm-2 col-form-label">Apartament</label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="vanzator.apartament" type="text" class="form-control" placeholder="apartament">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputJudet" class="col-sm-2 col-form-label">Judet</label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="vanzator.judet" type="text" class="form-control" placeholder="judet">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputCod" class="col-sm-2 col-form-label">Oras</label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="vanzator.oras" type="text" class="form-control" placeholder="oras">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputTara" class="col-sm-2 col-form-label">Tara</label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="vanzator.tara" type="text" class="form-control" placeholder="tara">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputCod" class="col-sm-2 col-form-label">Cod Postal</label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="vanzator.cod_postal" type="text" class="form-control" placeholder="cod postal">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Cumparator-->
+    <div class="form-control" name="cumparator">
+        <h2>Date cumparator</h2>
+        <div class="mb-3 row">
+            <label for="inputName" class="col-sm-2 col-form-label">Nume</label>
+            <div class="col-sm-10">
+                <input [(ngModel)]="cumparator.name" type="text" class="form-control" placeholder="name">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="inputSurname" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input [(ngModel)]="cumparator.email" type="text"  class="form-control" placeholder="email"/>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="inputSurname" class="col-sm-2 col-form-label">Phone</label>
+            <div class="col-sm-10">
+                <input [(ngModel)]="cumparator.phone" type="text"  class="form-control" placeholder="phone"/>
+            </div>
+        </div>
+        <div class="form-address">
+            <h2>Adresa:</h2>
+            <div class="mb-3 row">
+                <label for="inputStrada" class="col-sm-2 col-form-label">Strada</label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="cumparator.strada" type="text" class="form-control" placeholder="strada">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputNumber" class="col-sm-2 col-form-label">Nr</label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="cumparator.numar" type="text" class="form-control" placeholder="numar strada">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputBloc" class="col-sm-2 col-form-label">Bloc</label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="cumparator.bloc" type="text" class="form-control" placeholder="bloc">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputScara" class="col-sm-2 col-form-label">Scara</label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="cumparator.scara" type="text" class="form-control" placeholder="scara">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputCod" class="col-sm-2 col-form-label">Etaj</label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="cumparator.etaj" type="text" class="form-control" placeholder="etaj">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputApartment" class="col-sm-2 col-form-label">Apartament</label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="cumparator.apartament" type="text" class="form-control" placeholder="apartament">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputJudet" class="col-sm-2 col-form-label">Judet</label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="cumparator.judet" type="text" class="form-control" placeholder="judet">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputCod" class="col-sm-2 col-form-label">Oras</label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="cumparator.oras" type="text" class="form-control" placeholder="oras">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputTara" class="col-sm-2 col-form-label">Tara</label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="cumparator.tara" type="text" class="form-control" placeholder="tara">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputCod" class="col-sm-2 col-form-label">Cod Postal</label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="cumparator.cod_postal" type="text" class="form-control" placeholder="cod postal">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="button">
+        <a routerLink="document"><button class="btn" (click)="getDetails()">Generate</button></a>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+.container
+{
+    margin-bottom: 80px;
+    margin-top: 5%;
+}
+
+.container h1
+{
+    color: black;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.form-control
+{
+    width: 48%;
+    margin: 12px;
+    display: inline-block;
+    border-radius: 30px;
+}
+
+
+.container button
+{
+  background-color: #8ebf42;
+  position: absolute;
+  color: white;
+  left: 43%;
+  margin-top: 10px;
+  width: 200px;
+  border-radius: 10px;
+    
+}
+
+.col-form-label{
+    padding: 15px;
+}
+
+
+.button:hover {
+    opacity: 0.8;
+}
