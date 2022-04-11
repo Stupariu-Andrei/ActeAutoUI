@@ -12,9 +12,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ContractComponent } from './pages/contract/contract.component';
 import { CommonModule } from '@angular/common';
-
 import { DocumentComponent } from './pages/document/document.component';
-
 import { NgxDocViewerModule } from 'ngx-doc-viewer';
 import { PaymentComponent } from './pages/payment/payment.component';
 import { DetailsComponent } from './pages/details/details.component';
@@ -23,6 +21,12 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { LoginnComponent } from './pages/loginn/loginn.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+import {MatStepperModule} from '@angular/material/stepper';
+import { UsertypeComponent } from './sharepage/usertype/usertype.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -41,7 +45,8 @@ import { RegisterComponent } from './pages/register/register.component';
     ModelContractComponent,
     LoginnComponent,
     UserProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    UsertypeComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,10 @@ import { RegisterComponent } from './pages/register/register.component';
     FormsModule,
     NgxDocViewerModule,
     HttpClientModule,
-    PdfViewerModule
+    PdfViewerModule,
+    BrowserAnimationsModule,
+    MatStepperModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

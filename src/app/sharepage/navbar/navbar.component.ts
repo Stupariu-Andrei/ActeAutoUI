@@ -12,10 +12,12 @@ export class NavbarComponent implements OnInit {
 
   loggedIn: boolean;
   user: User;
+  logOutUser: User;
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    
   }
 
   isLoggedIn() {
@@ -28,6 +30,7 @@ export class NavbarComponent implements OnInit {
   logOut() {
     this.authService.setLoggedIn(false);
     this.router.navigate([""]);
+    this.authService.setCurrentUser(this.logOutUser);
     return this.authService.getLoggedIn();
   }
 }

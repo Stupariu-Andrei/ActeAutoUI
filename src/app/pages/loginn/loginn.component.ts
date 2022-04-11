@@ -18,7 +18,6 @@ export class LoginnComponent implements OnInit {
 
   user:User;
 
-  
   loggedIn: boolean;
 
   constructor(private authService: AuthService, private router: Router) { }
@@ -37,7 +36,7 @@ export class LoginnComponent implements OnInit {
     this.user = await this.authService.getUserByUsername(this.username).toPromise();
 
     if(this.loggedIn){
-      this.router.navigate(['/contract']);
+      this.router.navigate(['']);
       this.authService.setLoggedIn(this.loggedIn);
       this.authService.setCurrentUser(this.user);
     }
