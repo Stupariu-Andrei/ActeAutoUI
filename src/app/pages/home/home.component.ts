@@ -3,7 +3,6 @@ import { MatDialog } from "@angular/material/dialog";
 import { AuthService } from 'src/app/services/auth.service';
 import { UserTypeComponent } from 'src/app/pages/home/user-type/user-type.component';
 import { Router } from '@angular/router';
-import { ThisReceiver } from '@angular/compiler';
 import { ViewportScroller } from '@angular/common';
 
 @Component({
@@ -33,7 +32,7 @@ export class HomeComponent implements OnInit {
 
   startOperation() {
     if (this.loggedIn) {
-      this.router.navigate(['acte']);
+      this.router.navigate(['selling-operation']);
     } else {
       this.viewportScroller.scrollToAnchor('user_type');
     }

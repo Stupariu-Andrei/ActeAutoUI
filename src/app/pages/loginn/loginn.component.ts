@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 
-import { map } from 'rxjs/operators';
+import { OperationsService } from 'src/app/services/operations.service';
 
 @Component({
   selector: 'app-loginn',
@@ -20,7 +20,7 @@ export class LoginnComponent implements OnInit {
 
   loggedIn: boolean;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private operationService:OperationsService) { }
 
   ngOnInit(): void {
     this.user = new User();
@@ -34,15 +34,12 @@ export class LoginnComponent implements OnInit {
     this.loggedIn = await this.authService.loginUser(this.user).toPromise();
     
     this.user = await this.authService.getUserByUsername(this.username).toPromise();
-
+    
     if(this.loggedIn){
       this.router.navigate(['']);
       this.authService.setLoggedIn(this.loggedIn);
       this.authService.setCurrentUser(this.user);
     }
-
-    console.log(this.authService.loggedIn);
-    
 
   }
 

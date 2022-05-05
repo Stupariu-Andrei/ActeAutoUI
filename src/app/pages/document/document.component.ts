@@ -1,9 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 
-import { UserDetails } from 'src/app/models/user-details';
 import { DocService } from 'src/app/services/doc.service';
+import {saveAs} from 'file-saver'
 
 @Component({
   selector: 'app-document',
@@ -19,28 +18,24 @@ export class DocumentComponent implements OnInit {
   
   constructor(private docService:DocService) { }
 
-  createDocument(){
+  ngOnInit(): void {
+  } 
+
+  downloadDoc(){
     this.usersDetails = [];
 
     this.seller = JSON.parse(localStorage.getItem('seller')!) as User;
     this.buyer = JSON.parse(localStorage.getItem('buyer')!) as User;
-    
-    this.usersDetails.push(this.buyer);
-    this.usersDetails.push(this.seller);
 
-    this.docService.createDoc(this.usersDetails).subscribe(
-      data => {
-        data = this.usersDetails;
-      },
+    this.docService.downloadDoc("Contract-auto " + this.seller.name +" "+ this.buyer.name+".docx").subscribe(
+      blob => saveAs(blob,"Contract-auto " + this.seller.name +" "+ this.buyer.name+".docx" ),
       error => console.log(error)
-    )
+    );
 
-    window.close();
+    console.log(this.usersDetails);
 
   }
-
-  ngOnInit(): void {
-  } 
   
 
 }
+
