@@ -1,9 +1,15 @@
+.main{
+  background-color: rgb(230, 222, 222);
+}
+
 .card{
     border-radius: 20px;
+    box-shadow: 10px 3px 10px rgb(0 0 0 / 0.2);
+    animation-direction:alternate-reverse;
+    animation-duration:4s;
 }
 
 .logo {
-    background: #fff;
     transition: all 0.5s;
     margin-top: 1%;
     padding: 10px 0;
@@ -23,8 +29,17 @@
     text-decoration: underline;
   }
 .logo a span {
-    color: #1bbd36;
+    color: #009961;
   }
 .logo img {
     max-height: 40px;
-  }
+}
+
+.btn{
+  background-color: #009961;
+  color: white;
+}
+
+.btn:hover{
+  color: #111;
+}

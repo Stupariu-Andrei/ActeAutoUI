@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
     } else {
       localStorage.setItem("popupDisplay", "hide");
     }
+
   }
 
   startOperation() {

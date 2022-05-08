@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Address } from '../models/address';
 import { User } from '../models/user';
 
 @Injectable({
@@ -8,20 +9,24 @@ import { User } from '../models/user';
 })
 export class AuthService {
 
-  loggedIn: boolean = false;
+  loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   user: User;
 
   constructor(private httpClient: HttpClient) { }
 
   setLoggedIn(loggedIn: boolean){
-    this.loggedIn = loggedIn;
+    this.loggedIn.next(loggedIn);
   }
 
   getLoggedIn():boolean{
-    return this.loggedIn;
+    return this.loggedIn.getValue();
   }
 
-  setCurrentUser(user:User){
+  getLoggedInAsObserver(): Observable<boolean> {
+    return this.loggedIn
+  }
+
+  setCurrentUser(user:User){ 
     this.user = user;
   }
 
@@ -42,9 +47,15 @@ export class AuthService {
   }
 
   getUserByUsername(username: String):Observable<User>{
-    const url = "http://localhost:8082/api/auth/user?username=" + username;
+    const url = "http://localhost:8085/api/user?username=" + username;
 
     return this.httpClient.get<User>(url);
+  }
+
+  saveUserAddress(address:Address, username: String):Observable<Address>{
+    const url = "http://localhost:8085/api/user/address/save?username=" + username;
+
+    return this.httpClient.post<Address>(url,address);
   }
 
 }

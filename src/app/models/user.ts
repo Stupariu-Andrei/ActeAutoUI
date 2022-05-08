@@ -1,21 +1,27 @@
 import { Address } from "./address";
+import { Car } from "./car";
+import { IdentityData } from "./identity-data";
 
 export class User{
 
+    public id:number;
     public name: string;
     public username: string;
     public email: string;
     public password: string;
     public phone: string;
     public address: Address;
+    public identityData: IdentityData;
+    public sellingCar: Car;
 
-    setAttributes(name:string, username: string, email:string, phone:string, address: Address){
+    public setAttributes(name:string, email:string, phone:string){
         this.name = name;
-        this.username = username;
         this.email = email;
         this.phone = phone;
-        this.address = address;
     }
 
+    public setCarForSale(car: Car){
+        this.sellingCar = car;
+    }
 
 }

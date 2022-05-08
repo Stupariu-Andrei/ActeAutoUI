@@ -9,31 +9,25 @@ import { User } from '../models/user';
 })
 export class DocService {
 
-  private buyer: User;
-  private seller: User;
-
   constructor(private httpClient: HttpClient) { }
 
-  setBuyerDetails(buyer:User){
-     this.buyer = buyer;
-  }
-
-  setSellerDetails(seller:User){
-    this.seller = seller;
- }
-
-  getBuyerDetails(): User{
-    return this.buyer;
-  }
-
-  getSellerDetails(): User{
-    return this.seller;
-  }
-
-  createDoc(usersDetails: User[]): Observable<User[]> {
-    const url = "http://localhost:8080/document";
+  createDoc(usersDetails: User[], operation_id: any): Observable<User[]> {
+    let url = "http://localhost:8080/document/create?operation_id=" + operation_id;;
 
     return this.httpClient.post<User[]>(url, usersDetails);
+  }
+
+  downloadDoc(filename: string): Observable<Blob> {
+    let url = `http://localhost:8080/document/download?filename=${filename}`;
+    return this.httpClient.get(url, {
+      responseType: 'blob'
+    });
+  }
+
+  sendDocToMail(filename: string){
+    let url = `http://localhost:8080/document/send/mail?filename=${filename}`;
+
+    return this.httpClient.post(url, filename);
   }
 
 }

@@ -2,25 +2,33 @@
   <div class="container d-flex align-items-center">
 
     <h1 class="logo me-auto"><a href=""><span>Acte</span>auto</a></h1>
-
+    <div class="operation-progress" *ngIf="isLoggedIn()">
+      <button class="btn btn-operation-progress" (click)="seeOperations()">Istoric vanzari</button>
+    </div>
+    
     <nav id="navbar" class="navbar order-last order-lg-0">
       <ul>
         <li class="nav-item">
-          <a class="nav-link active" routerLink="" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}">Home</a>
+          <a class="nav-link active" (click)="goToHome()">Home</a>
+        </li>
+        <li class="dropdown"><a><span>Acte necesare</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a routerLink="registration">Inmatriculare</a></li>
+            <li><a routerLink="sale">Vanzare</a></li>
+            <li><a routerLink="rar">R.A.R.</a></li>
+            <li><a routerLink="insurance">Asigurari</a></li>
+          </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="details" routerLinkActive="active-link">Acte necesare</a>
+          <a class="nav-link" (click)="goToAbout()">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="about" routerLinkActive="active-link">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="contact" routerLinkActive="active-link">Contact</a>
+          <a class="nav-link" (click)="goToContact()">Contact</a>
         </li>
       </ul>
     </nav>
 
-    <div class="header-social-links" *ngIf="!loggedIn">
+    <div class="header-login" *ngIf="!loggedIn">
       <a class="login-link" *ngIf = "!isLoggedIn()" routerLink="login" >LogIn</a>
       <div class="dropdown">
           <button class="btn dropdown-toggle" data-bs-toggle="dropdown" *ngIf="isLoggedIn()"><i class="fa fa-user" aria-hidden="true"></i><span class="user-name">{{user.username}}</span> </button>
@@ -47,7 +55,7 @@
           </div>
 
           <div class="profile">
-            <a class="dropdown-item d-flex align-items-center" href="">
+            <a class="dropdown-item d-flex align-items-center" routerLink="/contact">
               <i class="bi bi-question-circle"></i>
               <span>Need Help?</span>
             </a>

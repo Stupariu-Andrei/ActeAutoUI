@@ -33,12 +33,11 @@ export class LoginnComponent implements OnInit {
 
     this.loggedIn = await this.authService.loginUser(this.user).toPromise();
     
-    this.user = await this.authService.getUserByUsername(this.username).toPromise();
-    
     if(this.loggedIn){
-      this.router.navigate(['']);
+      this.user = await this.authService.getUserByUsername(this.username).toPromise();
       this.authService.setLoggedIn(this.loggedIn);
       this.authService.setCurrentUser(this.user);
+      this.router.navigate(['']);
     }
 
   }

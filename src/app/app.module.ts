@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './sharepage/navbar/navbar.component';
@@ -25,9 +25,27 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatSelectModule} from '@angular/material/select';
 import { UsertypeComponent } from './sharepage/usertype/usertype.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatExpansionModule} from '@angular/material/expansion';
 
+import { NecessaryDocumentsComponent } from './pages/details/necessary-documents/necessary-documents.component';
+import { UserTypeComponent } from './pages/home/user-type/user-type.component';
+import { SaleLayoutComponent } from './pages/papers/sale/sale-layout/sale-layout.component';
+import { SaleComponent } from './pages/papers/sale/sale.component';
+import { ActeLayoutComponent } from './pages/acte/acte-layout/acte-layout.component';
+import { DetailsLayoutComponent } from './pages/details/details-layout/details-layout.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SellingOperationComponent } from './pages/selling-operation/selling-operation.component';
+import { SellingOperationLayoutComponent } from './pages/selling-operation/selling-operation-layout/selling-operation-layout.component';
+import { PaymentLayoutComponent } from './pages/payment/payment-layout/payment-layout.component';
+import { ContractLayoutComponent } from './pages/contract/contract-layout/contract-layout.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +57,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     AboutComponent,
     ContactComponent,
     ContractComponent,
+    SaleComponent,
     DocumentComponent,
     PaymentComponent,
     DetailsComponent,
@@ -46,7 +65,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     LoginnComponent,
     UserProfileComponent,
     RegisterComponent,
-    UsertypeComponent
+    UsertypeComponent,
+    NecessaryDocumentsComponent,
+    UserTypeComponent,
+    SaleLayoutComponent,
+    ActeLayoutComponent,
+    DetailsLayoutComponent,
+    SellingOperationComponent,
+    SellingOperationLayoutComponent,
+    PaymentLayoutComponent,
+    ContractLayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +86,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     PdfViewerModule,
     BrowserAnimationsModule,
     MatStepperModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatTooltipModule,
+    MatTabsModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    Ng2SearchPipeModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

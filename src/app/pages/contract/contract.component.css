@@ -7,18 +7,22 @@
 .container h1
 {
     color: black;
-    padding-top: 10px;
-    padding-bottom: 20px;
+    padding: 10px;
+    border-bottom: 1px solid black;
 }
 
-.form-control
+.input-control
 {
-    width: 48%;
-    margin: 12px;
-    display: inline-block;
-    border-radius: 30px;
+    border-radius: 20px;
+    width: 100%;
+    border-radius: 20px;
+    margin-left: 20%;
+    
 }
 
+.car-input{
+    margin-left: 54%;
+}
 
 .container button
 {
@@ -33,10 +37,23 @@
 }
 
 .col-form-label{
-    padding: 15px;
+  white-space: nowrap;
 }
 
 
 .button:hover {
     opacity: 0.8;
+}
+
+.address-container{
+    margin-left: 20%;
+}
+
+.document-checks{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    text-align: center;
+    font-size: large;
+    display: grid;
+    grid-gap: 10px;
 }

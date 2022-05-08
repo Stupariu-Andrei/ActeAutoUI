@@ -10,17 +10,18 @@ export class Address{
     oras: string;
     etaj: string;
 
-    constructor(street: string, streetNumber: string, bloc: string, scara: string, apartment: string, 
-        judet: string, tara: string, codPostal: string, oras: string, etaj: string){
-            this.street_name = street;
-            this.street_number = streetNumber;
-            this. bloc = bloc;
-            this. scara = scara;
-            this.apartment = apartment;
-            this.judet = judet;
-            this.tara = tara;
-            this.cod_postal = codPostal
-            this.oras = oras;
-            this.etaj = etaj;
-        }
+    setAttributes(street: string, streetNumber: string, bloc: string, scara: string, apartment: string, 
+        judet: string, tara: string, codPostal: string, oras: string, etaj: string)
+    {
+        this.street_name = street;
+        this.street_number = streetNumber;
+        this. bloc = bloc;
+        this. scara = scara;
+        this.apartment = apartment;
+        this.judet = judet;
+        this.tara = tara;
+        this.cod_postal = codPostal
+        this.oras = oras;
+        this.etaj = etaj;
+    }
 }

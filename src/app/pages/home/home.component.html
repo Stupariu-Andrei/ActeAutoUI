@@ -1,29 +1,262 @@
-<div class="banner">
-    <div class="content">
-        <h1 class="mb-5">Acte auto necesare<br> vanzarii de masini</h1>
-        <a routerLink="detalii">Vezi acte<i class="bi bi-arrow-right"></i></a>
-    </div>
-</div>
-<section id="about-us" class="about-us">
-    <div class="container" data-aos="fade-up">
-        <div class="row about-us">
-            <div class="col-lg-6" data-aos="fade-right">
-                <h2>Toate actele de care ai nevoie pentru cumpararea, vanzarea si inmatricularea unei masini.</h2>
-            </div>
-            <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left">
-                <p>
-                    Te-ai saturat de cozi si birocratie?
-                </p>
-                <ul>
-                    <p><i class="bi bi-check-circle"></i> Vanzarea<p>
-                    <p><i class="bi bi-check-circle"></i> Cumparare</p>
-                    <p><i class="bi bi-check-circle"></i> Inmatriculare</p>
-                </ul>
-                <p class="fst-italic">
-                    Ai nevoie de asigurare?
-                    Ne ocupam si de asta.
-                </p>
-            </div>
+<main id="main">
+  <section id="hero" class="d-flex flex-column justify-content-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-8">
+          <h1>Toate actele de care ai nevoie pentru vanzarea/inmatricularea sau asigurarea unei masini</h1>
+          <h2>Noi iti oferim cele mai bune solutii fara a fi nevoie sa te deplasezi.</h2>
+          <div class="tranzactie">
+            <button class="btn btn-tranzactie" (click)="startOperation()">Incepe tranzactia<i
+                class="bi bi-arrow-right"></i></button>
+          </div>
         </div>
+      </div>
     </div>
-</section>
+  </section>
+  <section id="user_type" class="user-type">
+    <div class="section-title">
+      <h2>Beneficiile utilizatorilor</h2>
+    </div>
+    <div class="row justify-content-center">
+      <div class="user-data-container col-sm-4">
+        <h1>Utilizator fara cont</h1>
+        <ul>
+          <li><i class="bi bi-check-circle"></i>Vizualizare model contract.</li>
+          <li><i class="bi bi-check-circle"></i>Completare si generare contract(30 lei)</li>
+          <li><i class="bi bi-check-circle"></i>Vizualizare oferte.</li>
+          <li><i class="bi bi-check-circle"></i>Calcul oferte.</li>
+        </ul>
+      </div>
+      <div class="user-data-container col-sm-4">
+        <h1>Utilizator cu cont</h1>
+        <ul>
+          <li><i class="bi bi-check-circle"></i>Vizualizare model contract</li>
+          <li><i class="bi bi-check-circle"></i>Completare si generare contract</li>
+          <li><i class="bi bi-check-circle"></i>Cerere fiscal</li>
+          <li><i class="bi bi-check-circle"></i>Numere rosii</li>
+          <li><i class="bi bi-check-circle"></i>R.A.R</li>
+          <li><i class="bi bi-check-circle"></i>Intocmire asigurare</li>
+          <p>Intra in cont <a [routerLink]="" (click)="goToLogin()"> Intra in cont</a></p>
+          <p>Nu ai inca un cont? <a [routerLink]="" (click)="goToRegister()"> Inregistreaza-te</a></p>
+        </ul>
+
+      </div>
+    </div>
+    <div class="section-title">
+      <h2 class="date-personale">Datele personale ale utilizatorilor</h2>
+      <p class="terms">Termeni si conditii privind datele cu caracter personal.</p>
+      <button class="btn btn-primary">Citeste mai mult</button>
+    </div>
+  </section>
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Preturi persoana fizica</h2>
+        <p>Aici puteti gasi serviciile oferite de noi.</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-file-text"></i></div>
+            <h4>Contract de vanzare-cumparare</h4>
+            <p>Acest contract se completeaza la noi pe site si se poate descarca si/sau primi pe email.</p>
+            <p><b>Pret:</b> 30 lei</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-file-post-fill"></i></div>
+            <h4>Fiscal</h4>
+            <p>Pentru a primi fiscalul este nevoie de contractul de vanzare-cumparare.</p>
+            <p><b>Pret(48 ore):</b> 300 lei</p>
+            <p><b>Pret(24 zile):</b> 50 lei</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-file-text" style='color:red'></i></div>
+            <h4>Numere rosii</h4>
+            <p>Obtinere numere rosii</p>
+            <p><b>Pret:</b> 50 lei</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-file-text"></i></div>
+            <h4>Numere negre</h4>
+            <p>Disponibilitatea numerelor negre si obtinerea acestora</p>
+            <p><b>Pret:</b> 200 lei</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-file-earmark-fill"></i></div>
+            <h4>Inmatriculare</h4>
+            <p>Programare + obtinere certificat inmatriculare.</p>
+            <p><b>Pret:</b> 100 lei</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-file-earmark-check"></i></div>
+            <h4>Asigurare </h4>
+            <p>Verificare si intocmire asigurare</p>
+            <p><b>Pret:</b> 30 lei</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="pricing" class="pricing">
+    <div class="container">
+      <div class="section-title">
+        <h2>Pachete persoana juridica</h2>
+        <p>Avem pachete promotionale pentru firmele/persoanele fizice care vor sa intocmeasca rapid actele
+          pentru
+          vanzarea/inmatricularea sau asigurarea unei masini.
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="box">
+            <h3>Bronze</h3>
+            <h4><sup>$</sup>0<span> / month</span></h4>
+            <ul>
+              <li>Descarcare contract vanzare-cumparare necompletat</li>
+              <li>Verificare documente necesare</li>
+              <li>Cautare asigurari</li>
+              <li>Completare si descarcare contract vanzare-cumparare(30 lei)</li>
+              <li class="na">Verificare numere R.A.R</li>
+              <li class="na">Programare fiscal si primire acte necesare pe mail/cont.</li>
+              <li class="na">Verificare masina</li>
+            </ul>
+            <div class="btn-wrap">
+              <a href="#" class="btn-buy">Buy Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
+          <div class="box recommended">
+            <span class="recommended-badge">Recommended</span>
+            <h3>Silver</h3>
+            <h4><sup>$</sup>19<span> / month</span></h4>
+            <ul>
+              <li>Descarcare contract vanzare-cumparare necompletat</li>
+              <li>Verificare documente necesare</li>
+              <li>Cautare asigurari</li>
+              <li>Verificare numere R.A.R</li>
+              <li>Completare si descarcare contract vanzare-cumparare</li>
+              <li>Programare fiscal si primire acte necesare pe mail/cont.</li>
+              <li class="na">Verificare masina</li>
+            </ul>
+            <div class="btn-wrap">
+              <a href="#" class="btn-buy">Buy Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
+          <div class="box">
+            <h3>Gold</h3>
+            <h4><sup>$</sup>29<span> / month</span></h4>
+            <ul>
+              <li>Descarcare contract vanzare-cumparare necompletat</li>
+              <li>Verificare documente necesare</li>
+              <li>Cautare asigurari</li>
+              <li>Verificare numere R.A.R</li>
+              <li>Completare si descarcare contract vanzare-cumparare</li>
+              <li>Programare fiscal si primire acte necesare pe mail/cont.</li>
+              <li>Verificare masina</li>
+            </ul>
+            <div class="btn-wrap">
+              <a href="#" class="btn-buy">Buy Now</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>About Us</h2>
+        <p>Acest site este facut pentru a va ajuta in vanzare/cumpararea si inmatricularea unei masini fara a fi
+          nevoi sa va deplasati.</p>
+      </div>
+    </div>
+    <app-about></app-about>
+  </section>
+  <section id="contact" class="contact">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Aveti nevoie de ajutor?</p>
+        <p>Nu ezitati sa ne contactati.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row mt-5">
+
+        <div class="col-lg-4">
+          <div class="info">
+            <div class="address">
+              <i class="bi bi-geo-alt"></i>
+              <h4>Location:</h4>
+              <p>A108 Adam Street, New York, NY 535022</p>
+            </div>
+
+            <div class="email">
+              <i class="bi bi-envelope"></i>
+              <h4>Email:</h4>
+              <p>info@example.com</p>
+            </div>
+
+            <div class="phone">
+              <i class="bi bi-phone"></i>
+              <h4>Call:</h4>
+              <p>+1 5589 55488 55s</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-lg-8 mt-5 mt-lg-0">
+
+          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+            </div>
+            <div class="form-group mt-3">
+              <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+            </div>
+            <div class="my-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+            <div class="text-center"><button type="submit">Send Message</button></div>
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+</main>

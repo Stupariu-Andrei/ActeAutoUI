@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
-import { DocService } from 'src/app/services/doc.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { PaymentService } from 'src/app/services/payment.service';
 
 @Component({
@@ -14,12 +13,25 @@ export class PaymentComponent implements OnInit {
 
   payuform: any = {};
 
-  userDetails: User;
+  seller: User;
   disablePaymentButton: boolean = true;
 
-  msg: string;
+  constructor(private authService: AuthService, private paymentService:PaymentService) {
 
-  constructor(private http: HttpClient, private docServie: DocService, private paymentService:PaymentService) {
+  }
+
+  ngOnInit(): void {
+    if(this.authService.getLoggedIn()){
+      this.seller = this.authService.getCurrentUser();
+    }else{
+      this.seller = JSON.parse(localStorage.getItem('seller')!) as User;
+    }
+
+    this.payuform.firstname = this.seller.name;
+    this.payuform.email = this.seller.email;
+    this.payuform.phone = this.seller.phone;
+    this.payuform.productinfo = "Contract vanzare-cumparare";
+    this.payuform.amount = 100;
 
   }
 
@@ -45,17 +57,9 @@ export class PaymentComponent implements OnInit {
         console.log(error);
       })
 
-  }
-
-
-  ngOnInit(): void {
-    this.userDetails = this.docServie.getBuyerDetails();
-    this.payuform.firstname = this.userDetails.name;
-    this.payuform.email = this.userDetails.email;
-    this.payuform.phone = this.userDetails.phone;
-    this.payuform.productinfo = "Contract vanzare-cumparare";
-    this.payuform.amount = "100";
+      console.log(paymentPayload);
 
   }
+
 
 }

@@ -44,3 +44,10 @@
 .profile .profile-edit img {
   max-width: 120px;
 }
+
+.form-control{
+  width: 50%;
+}
+.btn{
+  margin-right: 110px;
+}

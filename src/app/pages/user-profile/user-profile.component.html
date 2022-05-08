@@ -22,7 +22,6 @@
 
         <div class="card">
           <div class="card-body pt-3">
-            <!-- Bordered Tabs -->
             <ul class="nav nav-tabs nav-tabs-bordered">
 
               <li class="nav-item">
@@ -38,11 +37,7 @@
               </li>
 
               <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button>
-              </li>
-
-              <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Pagina de cereri</button>
               </li>
 
             </ul>
@@ -61,12 +56,12 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Country</div>
-                  <div class="col-lg-9 col-md-8">{{currentUserAddress.tara}}</div>
+                  <div class="col-lg-9 col-md-8">{{currentUser.address.tara}}</div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">City</div>
-                  <div class="col-lg-9 col-md-8">{{currentUserAddress.oras}}</div>
+                  <div class="col-lg-9 col-md-8">{{currentUser.address.oras}}</div>
                 </div>
 
                 <div class="row">
@@ -113,7 +108,7 @@
                   <div class="row mb-3">
                     <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="country" type="text" class="form-control" id="Country" value="{{currentUserAddress.tara}}">
+                      <input name="country" type="text" class="form-control" id="Country" value="{{currentUser.address.tara}}">
                     </div>
                   </div>
 
@@ -121,7 +116,7 @@
                     <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
                     <div class="col-md-8 col-lg-9">
                       <input name="address" type="text" class="form-control" id="Address" 
-                        value="Strada {{currentUserAddress.street_name}}, nr. {{currentUserAddress.street_number}}, bl. {{currentUserAddress.bloc}}, scara {{currentUserAddress.scara}}, ap. {{currentUserAddress.apartment}}">
+                        value="Strada {{currentUser.address.street_name}}, nr. {{currentUser.address.street_number}}, bl. {{currentUser.address.bloc}}, scara {{currentUser.address.scara}}, ap. {{currentUser.address.apartment}}">
                     </div>
                   </div>
 
@@ -174,152 +169,89 @@
 
               </div>
 
-              <div class="tab-pane fade profile-edit pt-3" id="profile-address">
-
-                <!-- Profile Edit Form -->
-                <form>
-
+              <div class="tab-pane fade profile-edit pt-3" id="profile-address" name="newAddress">
                   <div class="row mb-3">
-                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Strada</label>
+                    <label for="strada" class="col-md-4 col-lg-3 col-form-label">Strada</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="fullName" type="text" class="form-control" id="fullName" value="{{currentUserAddress.street_name}}">
+                      <input [(ngModel)]="newAddress.street_name" type="text" class="form-control" placeholder="{{currentUser.address.street_name}}" >
                     </div>
                   </div>
 
                   <div class="row mb-3">
-                    <label for="company" class="col-md-4 col-lg-3 col-form-label">Numar Strada</label>
+                    <label for="numar_strada" class="col-md-4 col-lg-3 col-form-label">Numar Strada</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="company" type="text" class="form-control" id="company" value="{{currentUserAddress.street_number}}">
+                      <input type="text" class="form-control" [(ngModel)]="newAddress.street_number" placeholder="{{currentUser.address.street_number}}">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Job" class="col-md-4 col-lg-3 col-form-label">Bloc</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="job" type="text" class="form-control" id="Job" value="{{currentUserAddress.bloc}}">
+                      <input type="text" class="form-control" [(ngModel)] = "newAddress.bloc" placeholder="{{currentUser.address.bloc}}">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Country" class="col-md-4 col-lg-3 col-form-label">Scara</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="country" type="text" class="form-control" id="Country" value="{{currentUserAddress.scara}}">
+                      <input type="text" class="form-control" [(ngModel)] = "newAddress.scara" placeholder="{{currentUser.address.scara}}">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Address" class="col-md-4 col-lg-3 col-form-label">Etaj</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="address" type="text" class="form-control" id="Address" value="{{currentUserAddress.etaj}}">
+                      <input type="text" class="form-control" [(ngModel)] = "newAddress.etaj" placeholder="{{currentUser.address.etaj}}">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Apartament</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="phone" type="text" class="form-control" id="Phone" value="{{currentUserAddress.apartment}}">
+                      <input type="text" class="form-control" [(ngModel)] = "newAddress.apartment" placeholder="{{currentUser.address.apartment}}">
                     </div>
                   </div>
 
                   <div class="row mb-3">
-                    <label for="Email" class="col-md-4 col-lg-3 col-form-label">Judet</label>
+                    <label for="Oras" class="col-md-4 col-lg-3 col-form-label">Oras</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="email" type="email" class="form-control" id="Email" value="{{currentUserAddress.judet}}">
+                      <input type="text" class="form-control" [(ngModel)] = "newAddress.oras" placeholder="{{currentUser.address.oras}}">
                     </div>
                   </div>
 
                   <div class="row mb-3">
-                    <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Tara</label>
+                    <label for="Judet" class="col-md-4 col-lg-3 col-form-label">Judet</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="twitter" type="text" class="form-control" id="Twitter" value="{{currentUserAddress.tara}}">
+                      <input type="text" class="form-control" [(ngModel)] = "newAddress.judet" placeholder="{{currentUser.address.judet}}">
                     </div>
                   </div>
 
                   <div class="row mb-3">
-                    <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Cod Postal</label>
+                    <label for="tara" class="col-md-4 col-lg-3 col-form-label">Tara</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="facebook" type="text" class="form-control" id="Facebook" value="{{currentUserAddress.cod_postal}}">
+                      <input type="text" class="form-control" [(ngModel)] = "newAddress.tara" placeholder="{{currentUser.address.tara}}">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="cod_postal" class="col-md-4 col-lg-3 col-form-label">Cod Postal</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input type="text" class="form-control" [(ngModel)]="newAddress.cod_postal" placeholder="{{currentUser.address.cod_postal}}">
                     </div>
                   </div>
 
                   <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="submit" class="btn btn-primary" (click)="saveAddress()">Save Changes</button>
                   </div>
-                </form>
-
-              </div>
-
-              <div class="tab-pane fade pt-3" id="profile-settings">
-
-                <!-- Settings Form -->
-                <form>
-
-                  <div class="row mb-3">
-                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email Notifications</label>
-                    <div class="col-md-8 col-lg-9">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="changesMade" checked>
-                        <label class="form-check-label" for="changesMade">
-                          Changes made to your account
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="newProducts" checked>
-                        <label class="form-check-label" for="newProducts">
-                          Information on new products and services
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="proOffers">
-                        <label class="form-check-label" for="proOffers">
-                          Marketing and promo offers
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="securityNotify" checked disabled>
-                        <label class="form-check-label" for="securityNotify">
-                          Security alerts
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                  </div>
-                </form><!-- End settings Form -->
-
               </div>
 
               <div class="tab-pane fade pt-3" id="profile-change-password">
                 <!-- Change Password Form -->
-                <form>
-
-                  <div class="row mb-3">
-                    <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="password" type="password" class="form-control" id="currentPassword">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="newpassword" type="password" class="form-control" id="newPassword">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="renewpassword" type="password" class="form-control" id="renewPassword">
-                    </div>
-                  </div>
 
                   <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Change Password</button>
+                    <a routerLink="details"><button type="submit" class="btn btn-primary">Verifica cereri</button></a>
                   </div>
-                </form><!-- End Change Password Form -->
+                <!-- End Change Password Form -->
 
               </div>
 

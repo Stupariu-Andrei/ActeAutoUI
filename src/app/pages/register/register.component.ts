@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
       this.user.email = this.email;
 
       var hasRegistred = await this.authService.registerUser(this.user).toPromise();
-      if(hasRegistred){
+      if(!hasRegistred){
         alert('User registred succesfully');
         this.authService.setCurrentUser(this.user);
         this.authService.setLoggedIn(true);
