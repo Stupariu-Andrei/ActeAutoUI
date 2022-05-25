@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModelContractComponent implements OnInit {
 
-  pdfSrc = "../../../assets/Contract.pdf";
+  pdfSrc = "../../../assets/model_contract.pdf";
 
   constructor() { }
 
