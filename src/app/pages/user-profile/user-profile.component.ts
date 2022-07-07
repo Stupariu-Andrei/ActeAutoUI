@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Address } from 'src/app/models/address';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
@@ -15,11 +16,13 @@ export class UserProfileComponent implements OnInit {
 
   public newAddress: any = {};
   userNewAddress: Address;
+  userAllowedOperations:any;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.currentUser = this.authService.getCurrentUser();
+    this.userAllowedOperations = await this.authService.getUserOperationsCounter(this.currentUser.id).toPromise();
   }
 
   async saveAddress(){
@@ -46,6 +49,10 @@ export class UserProfileComponent implements OnInit {
 
     alert("Your new address was saved");
     
+  }
+
+  goToHome(){
+    this.router.navigate(['/home']);
   }
 
 

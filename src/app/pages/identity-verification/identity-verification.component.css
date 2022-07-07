@@ -1,0 +1,19 @@
+.mat-dialog{
+    text-align: center;
+    height: 100%;
+    width: 100%;
+}
+
+mat-tab-group{
+    margin-bottom: 20%;
+}
+
+.btn{
+    border-radius: 20px;
+    color: var(--primary-color);
+    border: 1px solid;
+}
+
+.title{
+    margin-top: 20%;
+}

@@ -58,4 +58,16 @@ export class AuthService {
     return this.httpClient.post<Address>(url,address);
   }
 
+  updateUserOperationsCounter(userId: any, operations_counter: number):Observable<any>{
+    const url = `http://localhost:8085/api/user/add/operations_counter/${userId}?operations_counter=${operations_counter}`;
+
+    return this.httpClient.put<any>(url,operations_counter);
+  }
+
+  getUserOperationsCounter(userId: any):Observable<any>{
+    const url = `http://localhost:8085/api/user/get/operations_counter/${userId}`;
+
+    return this.httpClient.get<any>(url);
+  }
+
 }

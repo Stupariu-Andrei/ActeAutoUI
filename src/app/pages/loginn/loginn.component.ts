@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
-
-import { OperationsService } from 'src/app/services/operations.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-loginn',
@@ -20,7 +19,9 @@ export class LoginnComponent implements OnInit {
 
   loggedIn: boolean;
 
-  constructor(private authService: AuthService, private router: Router, private operationService:OperationsService) { }
+  redirect  = window.history.state;
+
+  constructor(private authService: AuthService, private router: Router, private location: Location) { }
 
   ngOnInit(): void {
     this.user = new User();
@@ -37,7 +38,7 @@ export class LoginnComponent implements OnInit {
       this.user = await this.authService.getUserByUsername(this.username).toPromise();
       this.authService.setLoggedIn(this.loggedIn);
       this.authService.setCurrentUser(this.user);
-      this.router.navigate(['']);
+      this.location.back();
     }
 
   }

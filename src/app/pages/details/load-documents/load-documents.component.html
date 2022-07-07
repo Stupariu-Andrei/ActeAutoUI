@@ -1,0 +1,6 @@
+<div class="mat-dialog">
+  <div mat-dialog-content *ngFor="let necessaryDoc of necessaryDocuments">
+      <li>{{necessaryDoc}} <button mat-button>Incarca {{necessaryDoc}}<mat-icon>attach_file</mat-icon></button></li>
+  </div>
+  <button mat-button class="button" (click)="closeWindow()">Close</button>
+</div>

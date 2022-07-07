@@ -1,0 +1,7 @@
+<div class="mat-dialog">
+  <h3>Alege operatiunea dorita:</h3>
+  <div mat-dialog-content *ngFor="let option of optionsList">
+      <button mat-button (click)="startOperation(option)"> Incepe {{option.type}}</button>
+  </div>
+  <a mat-button routerLink="details" (click)="closeWindow()">Mergi la detalii</a>
+</div>

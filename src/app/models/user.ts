@@ -13,6 +13,7 @@ export class User{
     public address: Address;
     public identityData: IdentityData;
     public sellingCar: Car;
+    public operations_counter: number;
 
     public setAttributes(name:string, email:string, phone:string){
         this.name = name;

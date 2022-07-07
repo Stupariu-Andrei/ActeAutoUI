@@ -12,22 +12,37 @@ export class DocService {
   constructor(private httpClient: HttpClient) { }
 
   createDoc(usersDetails: User[], operation_id: any): Observable<User[]> {
-    let url = "http://localhost:8080/document/create?operation_id=" + operation_id;;
+    let url = "http://localhost:8080/api/document/create?operation_id=" + operation_id;;
 
     return this.httpClient.post<User[]>(url, usersDetails);
   }
 
-  downloadDoc(filename: string): Observable<Blob> {
-    let url = `http://localhost:8080/document/download?filename=${filename}`;
+  downloadDoc(operationId: any): Observable<Blob> {
+    let url = `http://localhost:8080/api/document/download/${operationId}`;
+
+    return this.httpClient.get(url, {
+      responseType: 'blob'
+    });
+  }
+  
+  downloadFiscalDoc(contractId: any): Observable<Blob> {
+    let url = `http://localhost:8080/api/document/download/fiscal/${contractId}`;
+    
     return this.httpClient.get(url, {
       responseType: 'blob'
     });
   }
 
   sendDocToMail(filename: string){
-    let url = `http://localhost:8080/document/send/mail?filename=${filename}`;
+    let url = `http://localhost:8080/api/document/send/mail?filename=${filename}`;
 
     return this.httpClient.post(url, filename);
+  }
+
+  getContractIdFromOperation(operationId:any){
+    let url = `http://localhost:8080/api/document/contracts/${operationId}`;
+
+    return this.httpClient.get(url);
   }
 
 }

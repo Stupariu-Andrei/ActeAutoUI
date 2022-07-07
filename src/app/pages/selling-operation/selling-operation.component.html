@@ -1,18 +1,24 @@
 <div class="container">
     <mat-stepper orientation="horizontal" class="stepper">
         <mat-step class="mat-step" label="Selectare servicii">
-            <div class="form-group">
+            <h3>Numarul de vanzari al acestui cont: {{userAllowedOperations}}</h3>
+            <div class="form-group" *ngIf="userAllowedOperations > 0">
                 <label for="name">Introduceti numele operatiunii de vanzare:</label>
                 <input type="text" required class="form-control" [(ngModel)]="operationName" id="name">
+                <h4>Selectati actele dorite:</h4>
+                <li class="services-list" *ngFor="let option of options">
+                    <mat-checkbox [(ngModel)]="option.isSelected" (change)="checkedDeed(option)">
+                        {{option.type}}
+                    </mat-checkbox>
+                </li>
             </div>
-            <h4>Select your services:</h4>
-            <li class="services-list" *ngFor="let option of options">
-                <mat-checkbox [(ngModel)]="option.isSelected" (change)="checkedDeed(option)">
-                    {{option.type}}
-                </mat-checkbox>
-            </li>
             <div class="mat-button">
-                <button class="btn mat-button" (click)="getWantedDeed()" matStepperNext>Finalizare</button>
+                <button class="btn mat-button" *ngIf="userAllowedOperations > 0" (click)="getWantedDeed()"
+                    matStepperNext>Finalizare</button>
+            </div>
+            <div class="mat-button">
+                <button class="btn mat-button" *ngIf="userAllowedOperations == 0" (click)="goToPage('pricing')"
+                    matStepperNext>Cumpara vanzari</button>
             </div>
         </mat-step>
         <mat-step id="progres_acte" label="Progres acte">
@@ -21,14 +27,9 @@
                 <h4>Numele operatiunii: {{operation.name}}</h4>
                 <div class="service-progress" *ngFor="let wantedOption of operation.options">
                     <div class="row user-data-container">
-                        <div class="user-name col-sm-4" *ngIf="wantedOption.type == 'CVC'; else ngTemplate">
-                            <li><a routerLink="contract">{{wantedOption.type}}</a></li>
+                        <div class="user-name col-sm-4">
+                            <li>{{wantedOption.type}}</li>
                         </div>
-                        <ng-template #ngTemplate>
-                            <div class="user-name col-sm-4">
-                                <li> {{wantedOption.type}}</li>
-                            </div>
-                        </ng-template>
                         <div class="col-sm-4">
                             {{operation.progress}}
                         </div>
@@ -36,7 +37,7 @@
                 </div>
             </div>
             <div class="button">
-                <button class="btn mat-button" (click) = "saveOperation()"  matStepperNext>Incepe</button>
+                <button class="btn mat-button" (click)="openDialogForChoosingOperationToStart(operation)" matStepperNext>Incepe</button>
             </div>
         </mat-step>
     </mat-stepper>

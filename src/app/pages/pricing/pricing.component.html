@@ -1,0 +1,117 @@
+<div class="container">
+    <h1>Aici gasiti ofertele de preturi</h1>
+    <div class="col-md-10 col-md-offset-1">
+        <table class="pricing-table-box">
+            <tbody>
+                <tr>
+                    <td width="30%" class="pricing-table-box-text">
+                        <h2>OFERTA DE PRETURI <br /> PER VANZARE</h2>
+                    </td>
+                    <td width="20%">
+                        <div class="pricing-table-box-item">
+                            <div class="pricing-table-box-item-head color2">
+                                <p>Basic</p>
+                            </div>
+                            <div class="pricing-table-box-item-price color2">
+                                <p>$30<span>/ 1 vanzare</span></p>
+                            </div>
+                        </div>
+                    </td>
+                    <td width="20%">
+                        <div class="pricing-table-box-item">
+                            <div class="pricing-table-box-item-head color2">
+                                <p>Advanced</p>
+
+                            </div>
+                            <div class="pricing-table-box-item-price color2">
+                                <p>$50<span>/ 3 vanzari</span></p>
+
+                            </div>
+
+                        </div>
+                    </td>
+                    <td width="20%">
+                        <div class="pricing-table-box-item">
+                            <div class="pricing-table-box-item-head color2">
+                                <p>Pro</p>
+
+                            </div>
+                            <div class="pricing-table-box-item-price color2">
+                                <p>$90<span>/ 5 vanzari</span></p>
+                            </div>
+
+                        </div>
+                    </td>
+                </tr>
+                <tr class="pricing-table-box-list">
+                    <td class="first-row">Contract vanzare-cumparare</td>
+                    <td class="second-row"><mat-icon>checked</mat-icon></td>
+                    <td class="third-row"><mat-icon>checked</mat-icon></td>
+                    <td class="fourth-row"><mat-icon>checked</mat-icon></td>
+                </tr>
+                <tr class="pricing-table-box-list">
+                    <td class="first-row">Programare fiscal</td>
+                    <td class="second-row"><mat-icon>checked</mat-icon></td>
+                    <td class="third-row"><mat-icon>checked</mat-icon></td>
+                    <td class="fourth-row"><mat-icon>checked</mat-icon></td>
+                </tr>
+                <tr class="pricing-table-box-list">
+                    <td class="first-row">Primire fiscal pe mail/in aplicatie</td>
+                    <td class="second-row"><mat-icon>checked</mat-icon></td>
+                    <td class="third-row"><mat-icon>checked</mat-icon></td>
+                    <td class="fourth-row"><mat-icon>checked</mat-icon></td>
+                </tr>
+                <tr class="pricing-table-box-list">
+                    <td class="first-row">Programare numere rosii/negre</td>
+                    <td class="second-row"><mat-icon>checked</mat-icon></td>
+                    <td class="third-row"><mat-icon>checked</mat-icon></td>
+                    <td class="fourth-row"><mat-icon>checked</mat-icon></td>
+                </tr>
+                <tr class="pricing-table-box-list">
+                    <td class="first-row">Programare R.A.R.</td>
+                    <td class="second-row"><mat-icon>checked</mat-icon></td>
+                    <td class="third-row"><mat-icon>checked</mat-icon></td>
+                    <td class="fourth-row"><mat-icon>checked</mat-icon></td>
+                </tr>
+                <tr class="pricing-table-box-list">
+                    <td class="first-row">Verificare masina</td>
+                    <td class="second-row"><mat-icon>block</mat-icon></td>
+                    <td class="third-row"><mat-icon>block</mat-icon></td>
+                    <td class="fourth-row"><mat-icon>checked</mat-icon></td>
+                </tr>
+                <tr class="pricing-table-box-list">
+                    <td class="first-row">Support</td>
+                    <td class="second-row">24/7</td>
+                    <td class="third-row">24/7</td>
+                    <td class="fourth-row">24/7</td>
+                </tr>
+                <tr class="pricing-table-box-list">
+                    <td class="first-row"></td>
+                    <td class="second-row">
+                        <div class="pricing-table-box-item-purchase" (click) = "goToPage('login')" *ngIf="!isLoggedIn">
+                            <button class="btn btn-success">Intra in cont</button>
+                        </div>
+                        <div class="pricing-table-box-item-purchase"  *ngIf="isLoggedIn">
+                            <button class="btn btn-success" (click)="makePayment(30, 'details')">Cumpara</button>
+                        </div>
+                    </td>
+                    <td class="third-row">
+                        <div class="pricing-table-box-item-purchase">
+                            <button class="btn btn-success" *ngIf="!isLoggedIn" (click) = "goToPage('login')">Intra in cont</button>
+                        </div>
+                        <div class="pricing-table-box-item-purchase" *ngIf="isLoggedIn">
+                            <button class="btn btn-success" (click)="makePayment(50,'details')">Cumpara</button>
+                        </div>
+                    </td>
+                    <td class="fourth-row">
+                        <div class="pricing-table-box-item-purchase">
+                            <button class="btn btn-success" *ngIf="!isLoggedIn" (click) = "goToPage('login')">Intra in cont</button>
+                        </div>
+                        <div class="pricing-table-box-item-purchase" *ngIf="isLoggedIn">
+                            <button class="btn btn-success" (click)="makePayment(90,'selling-operation')">Cumpara</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>

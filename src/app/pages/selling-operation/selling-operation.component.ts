@@ -3,7 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Operation } from 'src/app/models/operation';
 import { Option } from 'src/app/models/option';
+import { AuthService } from 'src/app/services/auth.service';
 import { OperationsService } from 'src/app/services/operations.service';
+import { SellingOptionChooserComponent } from '../selling-options/selling-option-chooser/selling-option-chooser.component';
 
 @Component({
   selector: 'app-selling-operation',
@@ -15,8 +17,10 @@ export class SellingOperationComponent implements OnInit {
   options: Option[];
   operation: Operation;
   operationName: string;
+  userAllowedOperations: any;
 
-  constructor(public dialog: MatDialog, private operationsService: OperationsService, private router: Router) {
+  constructor(public dialog: MatDialog, private operationsService: OperationsService,
+    private router: Router, private authService:AuthService) {
 
   }
 
@@ -28,6 +32,8 @@ export class SellingOperationComponent implements OnInit {
         this.options = this.options.filter(item => item.id != 2);
       }
     }
+
+    this.userAllowedOperations = await this.authService.getUserOperationsCounter(this.authService.getCurrentUser().id).toPromise();
   }
 
   checkedDeed(option: Option) {
@@ -36,7 +42,7 @@ export class SellingOperationComponent implements OnInit {
 
   getWantedDeed() {
     this.operation.name = this.operationName;
-    
+
     for (const option of this.options) {
       if (option.isSelected) {
           this.operation.options.push(option);
@@ -52,14 +58,23 @@ export class SellingOperationComponent implements OnInit {
 
     this.operationsService.setCurrentOperation(this.operation);
 
-    for(var option of this.operation.options){
-      if(option.type == 'Contract vanzare-cumparare'){
-        this.router.navigate(['selling-operation/contract']);
-        return;
-      }
-    }
-    this.router.navigate(['selling-operation/details']);
+    this.userAllowedOperations = this.userAllowedOperations - 1;
+    await this.authService.updateUserOperationsCounter(this.authService.getCurrentUser().id, this.userAllowedOperations).toPromise();
+
   }
 
+  goToPage(pageName: string){
+    this.router.navigate([pageName]);
+  }
+
+  async openDialogForChoosingOperationToStart(operation: Operation) {
+
+    await this.saveOperation();
+
+    const dialogRef = this.dialog.open<SellingOptionChooserComponent>(SellingOptionChooserComponent, {
+      width: '400px',
+      data: operation.options
+    });
+  }
 
 }

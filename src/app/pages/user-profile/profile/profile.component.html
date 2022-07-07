@@ -1,0 +1,48 @@
+<mat-tab-group class="">
+  <mat-tab label="Vanzarile mele">
+    <app-details></app-details>
+  </mat-tab>
+  <mat-tab label="Adresa">
+    <div>   
+    <mat-form-field appearance="outline">
+      <mat-label>Numar Strada</mat-label>
+      <input matInput type="text" [(ngModel)]="newAddress.street_number"
+        placeholder="{{currentUser.address.street_number}}">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Bloc</mat-label>
+      <input matInput type="text" [(ngModel)] = "newAddress.bloc" placeholder="{{currentUser.address.bloc}}">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Scara</mat-label>
+      <input matInput type="text" [(ngModel)] = "newAddress.scara" placeholder="{{currentUser.address.scara}}">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Etaj</mat-label>
+      <input matInput type="text" [(ngModel)] = "newAddress.etaj" placeholder="{{currentUser.address.etaj}}">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Apartament</mat-label>
+      <input matInput type="text" [(ngModel)] = "newAddress.apartment" placeholder="{{currentUser.address.apartment}}">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Oras</mat-label>
+      <input matInput type="text" [(ngModel)] = "newAddress.oras" placeholder="{{currentUser.address.oras}}">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Judet</mat-label>
+      <input matInput type="text" [(ngModel)] = "newAddress.judet" placeholder="{{currentUser.address.judet}}">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Tara</mat-label>
+      <input matInput type="text" [(ngModel)] = "newAddress.tara" placeholder="{{currentUser.address.tara}}">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Cod Postal</mat-label>
+      <input matInput type="text" [(ngModel)] = "newAddress.cod_postal" placeholder="{{currentUser.address.cod_postal}}">
+    </mat-form-field>
+    <button matButton class="btn btn-primary" type="submit" (click)="saveAddress()">Save Changes</button>
+  </div>
+  </mat-tab>
+  <mat-tab label="Informations"> Informations</mat-tab>
+</mat-tab-group>

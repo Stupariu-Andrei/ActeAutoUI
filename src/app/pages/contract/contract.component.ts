@@ -38,8 +38,8 @@ export class ContractComponent implements OnInit {
     car:{}
   };
 
-  constructor(private docService: DocService, private authService: AuthService, 
-    private operationService:OperationsService, private router: Router) {
+  constructor(private docService: DocService, private authService: AuthService,
+    private operationService: OperationsService, private router: Router) {
 
   }
 
@@ -78,7 +78,7 @@ export class ContractComponent implements OnInit {
     if(this.authService.getCurrentUser()){
       this.currentOptions = await this.operationService.retrieveOptions().toPromise();
     }
-    
+
     if(this.seller.username == null) {
       this.seller.setAttributes(this.vanzator.name, this.vanzator.email, this.vanzator.phone);
     }
@@ -91,14 +91,11 @@ export class ContractComponent implements OnInit {
     this.seller.sellingCar = this.vanzator.car;
 
     this.buyer.setAttributes(this.cumparator.name, this.cumparator.email, this.cumparator.phone);
-    this.buyer.address = this.cumparator.address; 
+    this.buyer.address = this.cumparator.address;
     this.buyer.identityData = this.cumparator.identityData;
 
     this.users.push(this.seller);
     this.users.push(this.buyer);
-
-    localStorage.setItem('seller', JSON.stringify(this.seller));
-    localStorage.setItem('buyer', JSON.stringify(this.buyer));
 
     if(this.checkedFiscal){
       var option = this.currentOptions.find(op => op.id == 2)!;
@@ -130,19 +127,17 @@ export class ContractComponent implements OnInit {
       )
     }
 
-    if(this.checkedMail){
-      this.docService.sendDocToMail("Contract-auto " + this.seller.name +" "+ this.buyer.name+".docx").subscribe(
-        data => data = "Contract-auto " + this.seller.name +" "+ this.buyer.name+".docx"
-      )
-    }
+    // if(this.checkedMail){
+    //   this.docService.sendDocToMail("Contract-auto " + this.seller.name +" "+ this.buyer.name+".docx").subscribe(
+    //     data => data = "Contract-auto " + this.seller.name +" "+ this.buyer.name+".docx"
+    //   )
+    // }
 
     if(this.authService.getCurrentUser()){
-      this.router.navigate(["/details"])
+      this.router.navigate(["/car-registration"]);
     }else{
-      this.router.navigate(["/payment"])
+      this.router.navigate(["/payment"]);
     }
-    
-
   }
 
 }

@@ -1,21 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import { AuthService } from 'src/app/services/auth.service';
 import { UserTypeComponent } from 'src/app/pages/home/user-type/user-type.component';
-import { Router } from '@angular/router';
-import { ViewportScroller } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DOCUMENT, ViewportScroller } from '@angular/common';
+import { PageScrollInstance, PageScrollService } from 'ngx-page-scroll-core';
+import { IdentityVerificationComponent } from '../identity-verification/identity-verification.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
   public loggedIn: boolean;
 
-  constructor(private dialog: MatDialog, private authService: AuthService, private router: Router, private viewportScroller: ViewportScroller) {
+  constructor(private dialog: MatDialog, private authService: AuthService,
+    private pageScrollService: PageScrollService, @Inject(DOCUMENT) private document: any,
+    private router: Router, private route: ActivatedRoute, private viewportScroller: ViewportScroller) {
 
+  }
+
+  ngAfterViewInit(): void {
+    this.route.fragment.subscribe((fragment: any) => {
+      this.viewportScroller.scrollToAnchor(fragment);
+    })
   }
 
   ngOnInit(): void {
@@ -39,12 +49,19 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  goToLogin(){
-    this.router.navigate(['login']);
+  goToPage(pageName: string){
+    this.router.navigate([pageName]);
   }
 
-  goToRegister(){
-    this.router.navigate(['register'])
+  goToSection(sectionName: string){
+    this.viewportScroller.scrollToAnchor(sectionName);
+  }
+
+  openDialog(){
+    const dialogRef = this.dialog.open<IdentityVerificationComponent>(IdentityVerificationComponent,{
+      width: '650px',
+      height:'400px'
+    });
   }
 
 }

@@ -1,0 +1,137 @@
+<main id="main">
+  <div class="registration-title" data-aos="fade-in">
+    <div class="container">
+      <h2>Ghid informativ</h2>
+      <mat-tab-group>
+        <mat-tab label="Contract vanzare-cumparare">
+          <h3>Contract de vanzare cumparare</h3>
+          <ul>
+            <h4>Acte necesare</h4>
+            <li>Buletin vanzator.</li>
+            <li>Buletin cumparator</li>
+            <li>Actele masinii</li>
+            <li>Aici puteti completa contractul de vanzare cumparare: <a mat-button (click)="goToPage('contract')">Completeaza contract</a></li>
+            <li>De aici puteti descarca modeulul de contract: <a mat-button download="model_contract" href="../../../assets/model_contract.docx">Descarca model contract</a></li>
+            <h4>Taxe contract</h4>
+            <li>Pentru a putea descarca contractul completat va trebui sa platiti dupa completare o taxa de: ? lei</li>
+            <li>Pentru a obtine certificatul fiscal pentru contractul completat in 24 de ore trebuie platita taxa de: 100 lei</li>
+            <li>Pentru eliberarea certificatui fiscal pentru contractul completat in 48 de zile nu se percep taxe</li>
+          </ul>
+        </mat-tab>
+        <mat-tab label="Numere rosii">
+          <h3>Numere rosii</h3>
+          <ul>
+            <h4>Acte necesare</h4>
+            <li>Dovada prin care se atesta ca ai asigurarea obligatorie.
+              Poti sa optezi pentru o asigurare pe o luna in vederea inmatricularii
+              sau pentru o perioada mai mare de timp (3 luni, 6 luni, 1 an). Aceasta trebuie sa fie
+              facuta pe numele persoanei care vrea sa faca inmatricularea. Se prezinta in copie.</li>
+            <li>Cerere numere provizorii, ce se face din partea noului proprietar.
+              Pe cerere se scrie in clar ca se doresc numere rosii si pe ce perioada.</li>
+            <li>Copie dupa actul de proprietate. In aceasta faza, actul nu trebuie tradus, ci doar prezentat in copie.
+              Pentru schimbare proprietar auto, vei avea nevoie fie de contractul de vanzare-cumparare, fie de factura
+              de achizitie.</li>
+            <li>Copie dupa cartea de identitate a masinii. In functie de ghiseul la care te vei prezenta,
+              este posibil sa iti ceara sa prezinti si originalul, asa ca este bine sa il ai la tine.</li>
+            <li>Dovada ca ai achitat taxele de autorizatia de circulatie provizorie. </li>
+            <li>Actul de identitate a proprietarului in copie si original.</li>
+          </ul>
+          <ul>
+            <h4>Taxe numere rosii</h4>
+            <li>Taxa ce reprezinta contravaloarea autorizatiei de functionare provizorie de 13 lei.</li>
+            <li>Taxa de autorizatie numerele rosii pe 3 luni este de 39 lei.</li>
+            <li>Taxa numere rosii - 40 lei</li>
+          </ul>
+        </mat-tab>
+        <mat-tab label="Numere negre">
+          <h3>Numere negre</h3>
+          <ul>
+            <h4>Acte necesare</h4>
+            <li>Cerere de inmatriculare - <a mat-button download="model_contract" href="../../../assets/model_cerere.docx">Descarca cerere</a></li>
+            <li>Fisa de inmatriculare vizata la circa financiara de care apartine proprietarul</li>
+            <li>Certificatul de inmatriculare a fostului proprietar, in caz ca ai cumparat masina second hand, in original,
+              iar ITP-ul trebuie sa fie in termen de valabilitate;</li>
+            <li>Cartea de identitate a autovehicului (original si copie simpla)</li>
+            <li>Actul de identitate al solicitantului (original si copie simpla)</li>
+            <li>Copie dupa asigurarea RCA valabila</li>
+            <li>Daca vehiculul este adus din strainatate, ai nevoie si de Certificatul de Autenticitate, ce il vei obtine de la RAR.</li>
+            <li>Chitanta care atesta plata certificatului de inmatriculare.</li>
+            <li>Dovada platii pentru placutele de inmatriculare</li>
+            <li>Procura notariala, in cazul in care actele nu sunt depuse de titular</li>
+            <li>In cazul in care masina este adusa din afara tarii, ai nevoie si de documentul de inmatriculare din tara respectiva,
+              de placutele de tranzit sau de dovada ca vehiculul a intrat pe platforma in tara;</li>
+            <li>Dovada ca a fost achitat TVA-ul pentru persoanele fizice sau pentru firmele ce nu sunt platitoare de TVA,
+                daca masina este din afara tarii, dar din spatiul UE</li>
+            <li>In cazul persoanelor juridice, mai este nevoie si de documentele care atesta dobandirea personalitatii
+              juridice, denumirea si sediul, in copie simpla, precum si imputernicirea pentru reprezentantul legal al
+              acestora.
+            </li>
+          </ul>
+          <ul>
+            <h4>Taxe numere negre</h4>
+            <li>Daca ai nevoie de dovada de la RAR, va fi necesar sa achiti o taxa de 539 lei pentru masini mici. </li>
+            <li>Plata certificatului de inmatriculare (37 de lei)</li>
+            <li>Plata pentru placutele de inmatriculare (40 de lei/aleatoriu sau 85 de lei/la alegere)</li>
+          </ul>
+        </mat-tab>
+        <mat-tab label="Numere verzi">
+          <h3>Numere verzi</h3>
+          <ul>
+            <h4>Acte necesare</h4>
+            <li>Cerere de inmatriculare - <a mat-button download="model_contract" href="../../../assets/model_cerere.docx">Descarca cerere</a></li>
+            <li>Fisa de inmatriculare vizata la circa financiara de care apartine proprietarul</li>
+            <li>Certificatul de inmatriculare a fostului proprietar, in caz ca ai cumparat masina second hand, in original,
+              iar ITP-ul trebuie sa fie in termen de valabilitate;</li>
+            <li>Cartea de identitate a autovehicului (original si copie simpla)</li>
+            <li>Actul de identitate al solicitantului (original si copie simpla)</li>
+            <li>Copie dupa asigurarea RCA valabila</li>
+            <li>Daca vehiculul este adus din strainatate, ai nevoie si de Certificatul de Autenticitate, ce il vei obtine de la RAR.</li>
+            <li>Chitanta care atesta plata certificatului de inmatriculare.</li>
+            <li>Dovada platii pentru placutele de inmatriculare</li>
+            <li>Procura notariala, in cazul in care actele nu sunt depuse de titular</li>
+            <li>In cazul in care masina este adusa din afara tarii, ai nevoie si de documentul de inmatriculare din tara respectiva,
+              de placutele de tranzit sau de dovada ca vehiculul a intrat pe platforma in tara;</li>
+            <li>Dovada ca a fost achitat TVA-ul pentru persoanele fizice sau pentru firmele ce nu sunt platitoare de TVA,
+                daca masina este din afara tarii, dar din spatiul UE</li>
+            <li>In cazul persoanelor juridice, mai este nevoie si de documentele care atesta dobandirea personalitatii
+              juridice, denumirea si sediul, in copie simpla, precum si imputernicirea pentru reprezentantul legal al
+              acestora.
+            </li>
+          </ul>
+          <ul>
+            <h4>Taxe numere verzi</h4>
+            <li>Daca ai nevoie de dovada de la RAR, va fi necesar sa achiti o taxa de 539 lei pentru masini mici. </li>
+            <li>Plata certificatului de inmatriculare (37 de lei)</li>
+            <li>Plata pentru placutele de inmatriculare (40 de lei/aleatoriu sau 85 de lei/la alegere)</li>
+          </ul>
+        </mat-tab>
+        <mat-tab label="Schimbare certificat">
+          <h3>Schimbare de certificat</h3>
+          <ul>
+            <h4>Acte necesare</h4>
+            <li>Cererea solicitantului - <a mat-button download="model_contract" href="../../../assets/model_cerere.docx">Descarca cerere</a></li>
+            <li>Fisa de inmatriculare vizata de organul fiscal competent teritorial, in cazul schimbarii domiciliului</li>
+            <li>Cartea de identitate a vehiculului original si copie</li>
+            <li>Actul de identitate al solicitantului, in original si copie</li>
+            <li>Dovada achitarii taxei certificatului de inmatriculare</li>
+            <li>In cazul persoanelor juridice vor fi depuse documentele care sa ateste dobandirea personalitatii juridice,
+              denumirea si sediul, in copie (de exemplu certificat inregistrare la Registrul Comertului),
+              precum si imputernicirea reprezentantului legal al acestora</li>
+            <li>Procura speciala autentificata de notarul public, in cazul in care
+              documentele se depun de o alta persoana decat titularul.</li>
+            <li>Certificatul de inmatriculare in original</li>
+            <li>Copia contractului RCA in termenul de valabilitate</li>
+          </ul>
+          <ul>
+            <h4>Taxe schimbare de certificat</h4>
+            <li>Plata taxei pentru certificatul de inmatriculare - 37 lei</li>
+          </ul>
+        </mat-tab>
+        <mat-tab label="Programare R.A.R.">
+          <h3>Programare R.A.R.</h3>
+          <li>Pentru programare la R.A.R. puteti accesa acest link <a href="https://pro.rarom.ro/programari.asp">Programeaza</a></li>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,10 @@
+.mat-dialog{
+  display: block;
+  text-align: center;
+}
+
+.mat-dialog button{
+  border-radius: 10px;
+  margin-top: 5%;
+  background-color: transparent;
+}

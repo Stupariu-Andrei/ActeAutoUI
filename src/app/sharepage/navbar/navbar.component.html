@@ -1,78 +1,40 @@
-<header id="header" class="fixed-top">
-  <div class="container d-flex align-items-center">
-
-    <h1 class="logo me-auto"><a href=""><span>Acte</span>auto</a></h1>
-    <div class="operation-progress" *ngIf="isLoggedIn()">
-      <button class="btn btn-operation-progress" (click)="seeOperations()">Istoric vanzari</button>
+<mat-toolbar class="fixed-top">
+    <h1 class="logo me-auto"><a routerLink="home" (click)="goToAnchor('hero')"><span>Acte</span>auto</a></h1>
+  <div class="operation-progress" *ngIf="isLoggedIn()">
+    <button mat-button class="btn btn-operation-progress" (click)="seeOperations()">Istoric vanzari.</button>
+    <button mat-button class="btn btn-operation-progress" (click)="startOperation()">Incepe o vanzare.</button>
+  </div>
+  <span class="example-spacer"></span>
+  <div class="navbar-links">
+    <a mat-button class="matButton" (click)="goToAnchor('hero')">Home</a>
+    <a mat-button class="matButton" (click)="goToPage('information-guide')">Information guide</a>
+    <a mat-button class="matButton" (click)="goToAnchor('pricing')">Pricing</a>
+    <a mat-button class="matButton" (click)="goToAnchor('about')">About</a>
+    <a mat-button class="matButton" (click)="goToAnchor('contact')">Contact</a>
+    <div class="header-login" *ngIf="!isLoggedIn()">
+      <a mat-button class="matButton" *ngIf="!isLoggedIn()" routerLink="login">LogIn</a>
     </div>
-    
-    <nav id="navbar" class="navbar order-last order-lg-0">
-      <ul>
-        <li class="nav-item">
-          <a class="nav-link active" (click)="goToHome()">Home</a>
-        </li>
-        <li class="dropdown"><a><span>Acte necesare</span> <i class="bi bi-chevron-down"></i></a>
-          <ul>
-            <li><a routerLink="registration">Inmatriculare</a></li>
-            <li><a routerLink="sale">Vanzare</a></li>
-            <li><a routerLink="rar">R.A.R.</a></li>
-            <li><a routerLink="insurance">Asigurari</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" (click)="goToAbout()">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" (click)="goToContact()">Contact</a>
-        </li>
-      </ul>
-    </nav>
-
-    <div class="header-login" *ngIf="!loggedIn">
-      <a class="login-link" *ngIf = "!isLoggedIn()" routerLink="login" >LogIn</a>
-      <div class="dropdown">
-          <button class="btn dropdown-toggle" data-bs-toggle="dropdown" *ngIf="isLoggedIn()"><i class="fa fa-user" aria-hidden="true"></i><span class="user-name">{{user.username}}</span> </button>
-        <div class="dropdown-content">
-          <div class="profile">
-            <a class="dropdown-item d-flex align-items-center" routerLink="user-profile">
-              <i class="bi bi-person"></i>
-              <span>My Profile</span>
-            </a>
-          </div>
-          <div class="profile">
-            <hr class="dropdown-divider">
-          </div>
-
-          <div class="profile">
-            <a class="dropdown-item d-flex align-items-center" routerLink="user-profile">
-              <i class="bi bi-gear"></i>
-              <span>Account Settings</span>
-            </a>
-          </div>
-
-          <div class="profile">
-            <hr class="dropdown-divider">
-          </div>
-
-          <div class="profile">
-            <a class="dropdown-item d-flex align-items-center" routerLink="/contact">
-              <i class="bi bi-question-circle"></i>
-              <span>Need Help?</span>
-            </a>
-          </div>
-          <div class="profile">
-            <hr class="dropdown-divider">
-          </div>
-
-          <div class="profile" (click)="logOut()">
-            <a class="dropdown-item d-flex align-items-center" href="">
-              <i class="bi bi-box-arrow-right"></i>
-              <span>Sign Out</span>
-            </a>
-          </div>
-        </div>
-      </div>
+    <div class="header-login">
+      <button mat-button class="matButton" [matMenuTriggerFor]="menu" *ngIf="isLoggedIn()">
+        <mat-icon>person</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" class="mat-menu">
+        <button mat-menu-item class="matButton" (click)="goToPage('user-profile')">
+          <mat-icon>account_circle</mat-icon>My Profile
+        </button>
+        <button mat-menu-item class="matButton">
+          <mat-icon>settings</mat-icon>Account Settings
+        </button>
+        <button mat-menu-item class="matButton">
+          <mat-icon>help</mat-icon>Need Help?
+        </button>
+        <button mat-menu-item class="matButton" (click)="logOut()">
+          <mat-icon>logout</mat-icon>Sign Out
+        </button>
+      </mat-menu>
     </div>
+
 
   </div>
-</header>
+
+</mat-toolbar>

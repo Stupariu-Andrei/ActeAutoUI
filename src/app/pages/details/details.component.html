@@ -2,13 +2,13 @@
     <div class="user-data">
         <h1 class="text-center">Detalii progres cereri</h1>
         <mat-accordion>
-            <div class="search-box">
-                <button class="btn-search"><i class="fa fa-search"></i></button>
-                <input type="text" class="input-search" [(ngModel)]="searchedOperation" placeholder="Search...">
-              </div>
+            <mat-form-field class="search-bar">
+                <input matInput [(ngModel)]="searchedOperation" placeholder="Search...">
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
             <div class="service-progress" *ngFor="let operation of operationsList | filter:searchedOperation">
                 <mat-expansion-panel hideToggle (click)="getOperationOptionProgress(operation)">
-                    <mat-expansion-panel-header>
+                    <mat-expansion-panel-header (click)="setOperation(operation)">
                         <div class="user-name col-sm-4">
                             <mat-panel-title>
                                 {{operation.name}}
@@ -22,8 +22,8 @@
                     </mat-expansion-panel-header>
                     <div class="row user-data-container" *ngFor="let option of operation.options">
                         <div class="user-name col-sm-3"
-                            *ngIf="option.type == 'Contract vanzare-cumparare' && option.progress == 'In asteptare'; else ngTemplate">
-                            <li><a routerLink="contract" (click)="selectOperation(operation)">{{option.type}}</a></li>
+                            *ngIf="option.progress == 'In asteptare'; else ngTemplate">
+                            <li><a routerLink="contract" (click)="selectOption(option)">{{option.type}}</a></li>
                         </div>
                         <ng-template #ngTemplate>
                             <div class="user-name col-sm-3">
@@ -31,16 +31,21 @@
                             </div>
                         </ng-template>
                         <div class="col-sm-3">
-                            <mat-label class="btn details-button" (click)="openDialog(option)">Acte necesare</mat-label>
+                            <mat-label class="btn details-button" (click)="openDialogForNecessaryDocsDetails(option)">Acte necesare</mat-label>
                         </div>
                         <div class="col-sm-3">
                             {{option.progress}}
                         </div>
-                        <div class="col-sm-3" *ngIf="option.progress == 'Complete'" (click)="downloadDoc()">
+                        <div class="col-sm-3" *ngIf="option.progress == 'Complete' && option.type == 'Contract vanzare-cumparare'" (click)="downloadDoc(operation)">
                             <button class="btn download-btn">Descarca</button>
                         </div>
+                        <div class="col-sm-3" *ngIf="option.progress == 'Complete' && option.type == 'Fiscal'" (click)="downloadFiscalDoc(operation)">
+                            <button class="btn download-btn">Descarca</button>
+                        </div>
+                        <div class="col-sm-3" *ngIf="option.progress != 'Complete' && checkFiscal(operation) && option.type == 'Numere rosii' || option.type =='Numere negre' || option.type == 'Numere verzi'" (click)="openDialogForLoadingDocuments(option)">
+                          <button class="btn download-btn">Incarca acte</button>
+                      </div>
                     </div>
-
                 </mat-expansion-panel>
                 <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                 </mat-expansion-panel>

@@ -1,265 +1,37 @@
-<section class="section profile">
-    <div class="row">
-      <div class="col-xl-4">
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened>
 
-        <div class="card">
-          <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+    <img class="avatar mat-elevation-z8" />
 
-            <img src="../../../assets/img/profile.png" class="rounded-circle">
-            <h2>{{currentUser.name}}</h2>
-            <div class="social-links mt-2">
-              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
+    <h4 class="name">{{currentUser.name}}</h4>
+    <h3 class="operations-number">Numar vanzari: {{userAllowedOperations}}</h3>
 
-      </div>
 
-      <div class="col-xl-8">
+    <mat-divider></mat-divider>
 
-        <div class="card">
-          <div class="card-body pt-3">
-            <ul class="nav nav-tabs nav-tabs-bordered">
+    <button mat-button class="menu-button" (click)="goToHome()">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </button>
+    <a routerLink="profile"><button mat-button class="menu-button" >
+      <mat-icon>person</mat-icon>
+      <span>Profile</span>
+    </button></a>
+    <button mat-button class="menu-button">
+      <mat-icon>info</mat-icon>
+      <span>About</span>
+    </button>
 
-              <li class="nav-item">
-                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
-              </li>
+    <mat-divider></mat-divider>
 
-              <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
-              </li>
-
-              <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-address">Edit address</button>
-              </li>
-
-              <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Pagina de cereri</button>
-              </li>
-
-            </ul>
-            <div class="tab-content pt-2">
-
-              <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                <h5 class="card-title">About</h5>
-                <p class="small fst-italic">A user</p>
-
-                <h5 class="card-title">Profile Details</h5>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                  <div class="col-lg-9 col-md-8">{{currentUser.name}}</div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Country</div>
-                  <div class="col-lg-9 col-md-8">{{currentUser.address.tara}}</div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">City</div>
-                  <div class="col-lg-9 col-md-8">{{currentUser.address.oras}}</div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Phone</div>
-                  <div class="col-lg-9 col-md-8">{{currentUser.phone}}</div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Email</div>
-                  <div class="col-lg-9 col-md-8">{{currentUser.email}}</div>
-                </div>
-
-              </div>
-
-              <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-
-                <!-- Profile Edit Form -->
-                <form>
-                  <div class="row mb-3">
-                    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
-                    <div class="col-md-8 col-lg-9">
-                      <img src="../../../assets/img/profile.png" alt="Profile">
-                      <div class="pt-2">
-                        <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-                        <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="fullName" type="text" class="form-control" id="fullName" value="{{currentUser.name}}">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
-                    <div class="col-md-8 col-lg-9">
-                      <textarea name="about" class="form-control" id="about" style="height: 100px">A user</textarea>
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="country" type="text" class="form-control" id="Country" value="{{currentUser.address.tara}}">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="address" type="text" class="form-control" id="Address" 
-                        value="Strada {{currentUser.address.street_name}}, nr. {{currentUser.address.street_number}}, bl. {{currentUser.address.bloc}}, scara {{currentUser.address.scara}}, ap. {{currentUser.address.apartment}}">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="phone" type="text" class="form-control" id="Phone" value="{{currentUser.phone}}">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="email" type="email" class="form-control" id="Email" value="{{currentUser.email}}">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="twitter" type="text" class="form-control" id="Twitter" value="https://twitter.com/#">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="facebook" type="text" class="form-control" id="Facebook" value="https://facebook.com/#">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="instagram" type="text" class="form-control" id="Instagram" value="https://instagram.com/#">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="linkedin" type="text" class="form-control" id="Linkedin" value="https://linkedin.com/#">
-                    </div>
-                  </div>
-
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                  </div>
-                </form><!-- End Profile Edit Form -->
-
-              </div>
-
-              <div class="tab-pane fade profile-edit pt-3" id="profile-address" name="newAddress">
-                  <div class="row mb-3">
-                    <label for="strada" class="col-md-4 col-lg-3 col-form-label">Strada</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input [(ngModel)]="newAddress.street_name" type="text" class="form-control" placeholder="{{currentUser.address.street_name}}" >
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="numar_strada" class="col-md-4 col-lg-3 col-form-label">Numar Strada</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input type="text" class="form-control" [(ngModel)]="newAddress.street_number" placeholder="{{currentUser.address.street_number}}">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="Job" class="col-md-4 col-lg-3 col-form-label">Bloc</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input type="text" class="form-control" [(ngModel)] = "newAddress.bloc" placeholder="{{currentUser.address.bloc}}">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="Country" class="col-md-4 col-lg-3 col-form-label">Scara</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input type="text" class="form-control" [(ngModel)] = "newAddress.scara" placeholder="{{currentUser.address.scara}}">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="Address" class="col-md-4 col-lg-3 col-form-label">Etaj</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input type="text" class="form-control" [(ngModel)] = "newAddress.etaj" placeholder="{{currentUser.address.etaj}}">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Apartament</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input type="text" class="form-control" [(ngModel)] = "newAddress.apartment" placeholder="{{currentUser.address.apartment}}">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="Oras" class="col-md-4 col-lg-3 col-form-label">Oras</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input type="text" class="form-control" [(ngModel)] = "newAddress.oras" placeholder="{{currentUser.address.oras}}">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="Judet" class="col-md-4 col-lg-3 col-form-label">Judet</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input type="text" class="form-control" [(ngModel)] = "newAddress.judet" placeholder="{{currentUser.address.judet}}">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="tara" class="col-md-4 col-lg-3 col-form-label">Tara</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input type="text" class="form-control" [(ngModel)] = "newAddress.tara" placeholder="{{currentUser.address.tara}}">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="cod_postal" class="col-md-4 col-lg-3 col-form-label">Cod Postal</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input type="text" class="form-control" [(ngModel)]="newAddress.cod_postal" placeholder="{{currentUser.address.cod_postal}}">
-                    </div>
-                  </div>
-
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary" (click)="saveAddress()">Save Changes</button>
-                  </div>
-              </div>
-
-              <div class="tab-pane fade pt-3" id="profile-change-password">
-                <!-- Change Password Form -->
-
-                  <div class="text-center">
-                    <a routerLink="details"><button type="submit" class="btn btn-primary">Verifica cereri</button></a>
-                  </div>
-                <!-- End Change Password Form -->
-
-              </div>
-
-            </div><!-- End Bordered Tabs -->
-
-          </div>
-        </div>
-
-      </div>
+    <button mat-button class="menu-button">
+      <mat-icon>help</mat-icon>
+      <span>Help</span>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <router-outlet></router-outlet>
     </div>
-  </section>
+  </mat-sidenav-content>
+</mat-sidenav-container>

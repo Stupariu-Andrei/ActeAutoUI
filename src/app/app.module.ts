@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './sharepage/navbar/navbar.component';
 import { FooterComponent } from './sharepage/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ActeComponent } from './pages/acte/acte.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ContractComponent } from './pages/contract/contract.component';
@@ -35,9 +34,6 @@ import {MatExpansionModule} from '@angular/material/expansion';
 
 import { NecessaryDocumentsComponent } from './pages/details/necessary-documents/necessary-documents.component';
 import { UserTypeComponent } from './pages/home/user-type/user-type.component';
-import { SaleLayoutComponent } from './pages/papers/sale/sale-layout/sale-layout.component';
-import { SaleComponent } from './pages/papers/sale/sale.component';
-import { ActeLayoutComponent } from './pages/acte/acte-layout/acte-layout.component';
 import { DetailsLayoutComponent } from './pages/details/details-layout/details-layout.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -47,17 +43,37 @@ import { SellingOperationLayoutComponent } from './pages/selling-operation/selli
 import { PaymentLayoutComponent } from './pages/payment/payment-layout/payment-layout.component';
 import { ContractLayoutComponent } from './pages/contract/contract-layout/contract-layout.component';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { ProfileComponent } from './pages/user-profile/profile/profile.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { ProfileLayoutComponent } from './pages/user-profile/profile-layout/profile-layout.component';
+import { PricingComponent } from './pages/pricing/pricing.component';
+import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
+import { RouterModule } from '@angular/router';
+import {MatCardModule} from '@angular/material/card';
+import { IdentityVerificationComponent } from './pages/identity-verification/identity-verification.component';
+import { LoadDocumentsComponent } from './pages/details/load-documents/load-documents.component';
+import { InformationGuideComponent } from './pages/information-guide/information-guide.component';
+import { CarRegistrationComponent } from './pages/selling-options/car-registration/car-registration.component';
+import { CertificateChangeComponent } from './pages/selling-options/certificate-change/certificate-change.component';
+import { SellingOptionChooserComponent } from './pages/selling-options/selling-option-chooser/selling-option-chooser.component';
+import { ContractCompleterComponent } from './pages/selling-options/contract-completer/contract-completer.component';
+import { ContractCompleterLayoutComponent } from './pages/selling-options/contract-completer/contract-completer-layout/contract-completer-layout.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    ActeComponent,
     AboutComponent,
     ContactComponent,
     ContractComponent,
-    SaleComponent,
     DocumentComponent,
     PaymentComponent,
     DetailsComponent,
@@ -68,13 +84,22 @@ import { ContractLayoutComponent } from './pages/contract/contract-layout/contra
     UsertypeComponent,
     NecessaryDocumentsComponent,
     UserTypeComponent,
-    SaleLayoutComponent,
-    ActeLayoutComponent,
     DetailsLayoutComponent,
     SellingOperationComponent,
     SellingOperationLayoutComponent,
     PaymentLayoutComponent,
-    ContractLayoutComponent
+    ContractLayoutComponent,
+    ProfileComponent,
+    ProfileLayoutComponent,
+    PricingComponent,
+    IdentityVerificationComponent,
+    LoadDocumentsComponent,
+    InformationGuideComponent,
+    CarRegistrationComponent,
+    CertificateChangeComponent,
+    SellingOptionChooserComponent,
+    ContractCompleterComponent,
+    ContractCompleterLayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -91,12 +116,21 @@ import { ContractLayoutComponent } from './pages/contract/contract-layout/contra
     MatCheckboxModule,
     MatTooltipModule,
     MatTabsModule,
+    MatTableModule,
     MatIconModule,
     MatExpansionModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
-    Ng2SearchPipeModule
-    
+    Ng2SearchPipeModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatInputModule,
+    MatMenuModule,
+    NgxPageScrollCoreModule,
+    MatCardModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

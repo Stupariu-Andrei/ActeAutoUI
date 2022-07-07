@@ -1,7 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ChosenDocument } from 'src/app/models/chosen-document';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -16,10 +15,9 @@ export class NavbarComponent implements OnInit {
   user: User;
   logOutUser: User;
 
-  constructor(private authService: AuthService, private router: Router, private viewportScroller: ViewportScroller) { }
+  constructor(private route: ActivatedRoute, private authService: AuthService, private router: Router, private viewportScroller: ViewportScroller) { }
 
   ngOnInit(): void {
-    
   }
 
   isLoggedIn() {
@@ -39,15 +37,20 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/details']);
   }
 
-  goToContact(){
-    this.viewportScroller.scrollToAnchor('contact')
+  goToAnchor(anchorName: string){
+    this.router.navigate(['/home'], {fragment: anchorName});
+    // setTimeout(() => {
+    //   this.viewportScroller.scrollToAnchor(anchorName);
+    // }, 1000);
+ }
+  
+
+  goToPage(pageName:string){
+    this.router.navigate([pageName]);
   }
 
-  goToAbout(){
-    this.viewportScroller.scrollToAnchor('about');
+  startOperation(){
+    this.router.navigate(['selling-operation']);
   }
 
-  goToHome(){
-    this.viewportScroller.scrollToAnchor('hero');
-  }
 }

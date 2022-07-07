@@ -29,14 +29,14 @@
     text-decoration: underline;
   }
 .logo a span {
-    color: #009961;
+    color: var(--primary-color);
   }
 .logo img {
     max-height: 40px;
 }
 
 .btn{
-  background-color: #009961;
+  background-color: var(--primary-color);
   color: white;
 }
 

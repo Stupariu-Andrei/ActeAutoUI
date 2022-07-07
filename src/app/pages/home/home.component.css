@@ -13,6 +13,25 @@ section {
   height: 100%;
 }
 
+mat-card{
+  margin-top: 4%;
+  height: 5%;
+}
+
+mat-card a{
+  margin-left: 78%;
+  text-decoration: underline;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+mat-card a:hover{
+  margin-left: 78%;
+  text-decoration: underline;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
 .section-title {
   padding-bottom: 30px;
 }
@@ -177,7 +196,7 @@ section {
 }
 .pricing .box h4 {
   font-size: 42px;
-  color: #009961;
+  color: var(--primary-color);
   font-weight: 500;
   font-family: "Open Sans", sans-serif;
   margin-bottom: 20px;
@@ -204,7 +223,7 @@ section {
   padding-bottom: 16px;
 }
 .pricing .box ul i {
-  color: #009961;
+  color: var(--primary-color);
   font-size: 18px;
   padding-right: 4px;
 }
@@ -220,8 +239,8 @@ section {
   display: inline-block;
   padding: 10px 40px 12px 40px;
   border-radius: 50px;
-  border: 2px solid #009961;
-  color: #009961;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
   font-size: 14px;
   font-weight: 400;
   font-family: "Raleway", sans-serif;
@@ -229,7 +248,7 @@ section {
   transition: 0.3s;
 }
 .pricing .box .btn-buy:hover {
-  background: #009961;
+  background: var(--primary-color);
   color: #fff;
 }
 .pricing .recommended {
@@ -292,7 +311,7 @@ section {
   top: -8px;
   height: 100%;
   width: 100%;
-  background: #8bd6bb;
+  background: rgb(222, 222, 250);
   border-radius: 5px;
   transition: all 0.3s ease-out 0s;
   transform: translateZ(-1px);
@@ -409,6 +428,7 @@ section {
 .contact .php-email-form button[type=submit]:hover {
   color: black;
 }
+
 @-webkit-keyframes animate-loading {
   0% {
     transform: rotate(0deg);
