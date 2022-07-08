@@ -24,10 +24,10 @@ export class DocService {
       responseType: 'blob'
     });
   }
-  
+
   downloadFiscalDoc(contractId: any): Observable<Blob> {
     let url = `http://localhost:8080/api/document/download/fiscal/${contractId}`;
-    
+
     return this.httpClient.get(url, {
       responseType: 'blob'
     });
@@ -43,6 +43,12 @@ export class DocService {
     let url = `http://localhost:8080/api/document/contracts/${operationId}`;
 
     return this.httpClient.get(url);
+  }
+
+  saveDocument(operation_id: any, file: any){
+    const fd = new FormData();
+		fd.append('file', file);
+		return this.httpClient.post<File>(`http://localhost:8080/api/document/registration/save/${operation_id}`, fd);
   }
 
 }

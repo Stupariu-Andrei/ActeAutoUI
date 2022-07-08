@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Operation } from '../models/operation';
 import { Option } from '../models/option';
+import { RegistrationOption } from '../models/registration-option';
 import { User } from '../models/user';
 import { AuthService } from './auth.service';
 
@@ -100,6 +101,12 @@ export class OperationsService {
       responseType: 'text'
     }
     return this.httpClient.get<string>(url, requestOptions);
+  }
+
+  getRegistrationOptions(): Observable<RegistrationOption[]>{
+    const url = `http://localhost:8086/api/operations/registration-options`;
+
+    return this.httpClient.get<RegistrationOption[]>(url);
   }
 
 }

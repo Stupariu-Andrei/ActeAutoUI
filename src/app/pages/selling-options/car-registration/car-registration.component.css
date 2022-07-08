@@ -53,3 +53,7 @@ button{
   margin-bottom: 3%;
 }
 
+.file-input {
+	display: none;
+}
+
