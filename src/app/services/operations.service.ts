@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { NecessaryDocuments } from '../models/necessary-documents';
 import { Operation } from '../models/operation';
 import { Option } from '../models/option';
 import { RegistrationOption } from '../models/registration-option';
@@ -87,26 +88,37 @@ export class OperationsService {
     return this.httpClient.post<Operation>(url, [operation_id, option_id, progress]);
   }
 
-  saveRegistrationType(operation_id: any, registration_type: any, option_id: any){
-    const url = `http://localhost:8086/api/operations/registrationtype/save?operation_id=${operation_id}&registration_type=${registration_type}&option_id=${option_id}`;
+  saveRegistrationType(operation_id: any, option_id: any, registration_option_id: any){
+    const url = `http://localhost:8086/api/operations/registration-option/save/${operation_id}/${option_id}?registration_option_id=${registration_option_id}`;
 
-    return this.httpClient.post<Operation>(url,[operation_id, registration_type, option_id]);
+    return this.httpClient.post<Operation>(url,[operation_id, option_id, registration_option_id]);
   }
 
-  getRegistrationType(operation_id: any, option_id: any){
-    const url = `http://localhost:8086/api/operations/registrationtype/get?operation_id=${operation_id}&option_id=${option_id}`;
+  getRegistrationType(operation_id: any, option_id: any): Observable<RegistrationOption>{
+    const url = `http://localhost:8086/api/operations/registration-option/get?operation_id=${operation_id}&option_id=${option_id}`;
     const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
     const requestOptions: Object = {
       headers: headers,
       responseType: 'text'
     }
-    return this.httpClient.get<string>(url, requestOptions);
+    return this.httpClient.get<RegistrationOption>(url, requestOptions);
   }
 
   getRegistrationOptions(): Observable<RegistrationOption[]>{
     const url = `http://localhost:8086/api/operations/registration-options`;
 
     return this.httpClient.get<RegistrationOption[]>(url);
+  }
+
+  getOptionRegistrationNecessaryDocuments(registration_option_id: any){
+    const url = `http://localhost:8086/api/operations/registration-options/get/necessary-documents?registration_option_id=${registration_option_id}`;
+    return this.httpClient.get<NecessaryDocuments[]>(url);
+  }
+
+  prepareNecessaryDocumentsForRegistration(operation_id: any, option_id: any, necessaryDocumentsList: NecessaryDocuments[]){
+    const url = `http://localhost:8086/api/operations/registration-options/prepare/necessary-documents?operation_id=${operation_id}&option_id=${option_id}`
+
+    return this.httpClient.post<Operation>(url,necessaryDocumentsList);
   }
 
 }

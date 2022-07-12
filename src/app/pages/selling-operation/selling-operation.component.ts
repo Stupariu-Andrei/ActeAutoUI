@@ -27,9 +27,10 @@ export class SellingOperationComponent implements OnInit {
   async ngOnInit() {
     this.operation = new Operation();
     this.options = await this.operationsService.retrieveOptions().toPromise();
+    console.log(this.options);
     for (const option of this.options) {
-      if(option.id == 2){
-        this.options = this.options.filter(item => item.id != 2);
+      if(option.type == 'Fiscal'){
+        this.options = this.options.filter(item => item.type != 'Fiscal');
       }
     }
 
