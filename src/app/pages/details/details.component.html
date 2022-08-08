@@ -23,7 +23,7 @@
                     <div class="row user-data-container" *ngFor="let option of operation.options">
                         <div class="user-name col-sm-3"
                             *ngIf="option.progress == 'In asteptare'; else ngTemplate">
-                            <li><a routerLink="contract" (click)="selectOption(option)">{{option.type}}</a></li>
+                            <li><a (click)="selectOption(option)">{{option.type}}</a></li>
                         </div>
                         <ng-template #ngTemplate>
                             <div class="user-name col-sm-3">
@@ -42,9 +42,6 @@
                         <div class="col-sm-3" *ngIf="option.progress == 'Complete' && option.type == 'Fiscal'" (click)="downloadFiscalDoc(operation)">
                             <button class="btn download-btn">Descarca</button>
                         </div>
-                        <div class="col-sm-3" *ngIf="option.progress != 'Complete' && checkFiscal(operation) && option.type == 'Numere rosii' || option.type =='Numere negre' || option.type == 'Numere verzi'" (click)="openDialogForLoadingDocuments(option)">
-                          <button class="btn download-btn">Incarca acte</button>
-                      </div>
                     </div>
                 </mat-expansion-panel>
                 <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">

@@ -23,17 +23,17 @@ export class SellingOptionChooserComponent implements OnInit {
   startOperation(option: any){
     if(option.type == 'Contract vanzare-cumparare'){
       this.closeWindow();
-      this.goToPage('contract');
+      this.goToPage('details/selling-contract');
       return;
     }
     if(option.type == 'Inmatriculare'){
       this.closeWindow();
-      this.goToPage('car-registration')
+      this.goToPage('details/car-registration')
       return;
     }
-    if(option.type == 'Schimbare certificat'){
+    if(option.type == 'Schimbare de certificat'){
       this.closeWindow();
-      this.goToPage('cerificate-change');
+      this.goToPage('details/certificate-change');
       return;
     }
     this.operationService.setCurrentOption(option);

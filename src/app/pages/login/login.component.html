@@ -1,0 +1,72 @@
+<h1 class="logo me-auto"><a href=""><span>Acte</span>auto</a></h1>
+  <div class="container">
+    <form class="overlay-panel overlay-left" [formGroup]="loginForm">
+      <div class="social-link">
+        <a class="fa fa-facebook-square" aria-hidden="true"></a>
+        <a class="fa fa-google" aria-hidden="true"></a>
+        <a class="fa fa-linkedin-square" aria-hidden="true"></a>
+      </div>
+      <h2>Log In</h2>
+      <mat-form-field appearance="standard">
+        <mat-label>Name</mat-label>
+        <input matInput maxlength="15" type="text" placeholder="Enter your name" formControlName="username" #nameInput>
+        <mat-error>Name is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Password</mat-label>
+        <input matInput maxlength="15" type="password" placeholder="Enter your password" formControlName="password" #nameInput>
+        <mat-error>Password is required</mat-error>
+      </mat-form-field>
+      <button mat-button class="login-button" (click)="logInUser()" [disabled]="!isLoginSelected">LogIn</button>
+      <mat-label class="register-link">You don't have an account yet?<a mat-button (click)="changeForm()">Register
+          account</a></mat-label>
+    </form>
+    <div *ngIf="isLoginSelected" class="overlay-panel overlay-slide-right">
+      <h1>You are not registered yet?</h1>
+      <p>Click here to create an account and start selling cars.</p>
+      <a class="sign-button" mat-button (click)="changeForm()">Sign Up</a>
+    </div>
+    <div *ngIf="!isLoginSelected" class="overlay-panel overlay-slide-left">
+      <h1>You have an account?</h1>
+      <p>Click here to log into your account.</p>
+      <a class="sign-button" mat-button (click)="changeForm()">Sign In</a>
+    </div>
+    <form class="overlay-panel overlay-right" [formGroup]="registerForm">
+      <h2>Create your account</h2>
+      <mat-form-field appearance="standard">
+        <mat-label>Full name</mat-label>
+        <input matInput maxlength="15" type="text" placeholder="Enter your username" formControlName="name" #nameInput>
+        <mat-hint>Enter your full name</mat-hint>
+        <mat-error>Your full name is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Username</mat-label>
+        <input matInput maxlength="15" type="text" placeholder="Enter your username" formControlName="username" #nameInput>
+        <mat-hint>Min character 6: {{ nameInput.value.length }}/6</mat-hint>
+        <mat-error>Name is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="Enter your email" formControlName="email" #nameInput>
+        <mat-error>Email is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Confirm email</mat-label>
+        <input matInput type="email" placeholder="Confirm your email" formControlName="repeatEmail" #nameInput>
+        <mat-error>You need to confirm your email</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Password</mat-label>
+        <input matInput maxlength="15" type="password" placeholder="Enter your password" formControlName="password" #nameInput>
+        <mat-hint>Min character 6: {{ nameInput.value.length }}/6</mat-hint>
+        <mat-error>Password is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Confirm password</mat-label>
+        <input matInput maxlength="15" type="password" placeholder="Confirm your password" formControlName="confirmPassword" #nameInput>
+        <mat-hint>Mini character 6: {{ nameInput.value.length }}/6</mat-hint>
+        <mat-error>Password is required</mat-error>
+      </mat-form-field>
+      <a mat-button class="register-button" (click)="registerUser()" [disabled]="isLoginSelected">Register account</a>
+    </form>
+  </div>

@@ -2,7 +2,7 @@
   <div class="registration-title">
     <ng-template #ngTemplate>
       <input type="file" class="file-input" (change)="uploadDocument($event)" multiple #fileUpload />
-      <button mat-button color="primary" (click)="fileUpload.click()">
+      <button mat-button (click)="fileUpload.click()">
         <mat-icon>attach_file</mat-icon>
         Incarca document
       </button>
@@ -11,15 +11,22 @@
       <h2>Inmatriculare masina</h2>
       <div *ngFor="let registrationOption of registrationOptionsList">
         <button mat-button #registrationBtn (click)="saveRegistrationOptionForOperation(registrationOption)"
-        *ngIf="!isSelected">{{registrationOption.type}}</button>
+          *ngIf="!isSelected">{{registrationOption.type}}</button>
       </div>
-      <div class="numere" *ngIf="registrationOption">
+      <div class="numere" *ngIf="registrationOption != null && isSelected">
         <h3>{{registrationOption.type}}</h3>
-        <h4>Acte necesare</h4>
-        <ul *ngFor="let registrationNecessaryDocuments of optionRegistrationNecessaryDocumentsList">
-          <li>{{registrationNecessaryDocuments.description}}
-            <ng-template *ngTemplateOutlet="ngTemplate"></ng-template>
-          </li>
+        <h4>Acte necesare pentru acest dosar:</h4>
+        <ul *ngFor="let registrationNecessaryDocument of optionRegistrationNecessaryDocumentsList">
+            <li *ngIf="isDocUploadedList[registrationNecessaryDocument.id] == ''"
+            (click)="getSelectedDocumentId(registrationNecessaryDocument)">
+              {{registrationNecessaryDocument.description}}
+              <ng-template *ngTemplateOutlet="ngTemplate"></ng-template>
+            </li>
+            <li *ngIf="isDocUploadedList[registrationNecessaryDocument.id] != ''">
+              {{registrationNecessaryDocument.description}}
+              <br>
+              <button mat-button>Documentul {{isDocUploadedList[registrationNecessaryDocument.id]}} a fost incarcat.</button>
+            </li>
         </ul>
         <h4>{{registrationOption.type}} plati si taxe:</h4>
         <ul *ngFor="let taxes of optionRegistrationTaxes">
@@ -29,5 +36,5 @@
         </ul>
       </div>
     </div>
-    </div>
+  </div>
 </main>

@@ -6,11 +6,11 @@ import { DocService } from 'src/app/services/doc.service';
 import { OperationsService } from 'src/app/services/operations.service';
 
 @Component({
-  selector: 'app-certificate-change',
-  templateUrl: './certificate-change.component.html',
-  styleUrls: ['./certificate-change.component.css']
+  selector: 'app-selling-contract',
+  templateUrl: './selling-contract.component.html',
+  styleUrls: ['./selling-contract.component.css']
 })
-export class CertificateChangeComponent implements OnInit {
+export class SellingContractComponent implements OnInit {
 
   operation: Operation;
   option: Option;
@@ -18,6 +18,9 @@ export class CertificateChangeComponent implements OnInit {
   optionRegistrationTaxes: string[] = [];
   selectedDocument: NecessaryDocuments;
   isDocUploadedList:{[id : number]: string} = [];
+  fiscalOption: Option;
+
+  completedContract: any;
 
   constructor(private operationService: OperationsService, private docService: DocService) { }
 
@@ -28,27 +31,30 @@ export class CertificateChangeComponent implements OnInit {
   async initializeOption(){
     this.operation = this.operationService.getCurrentOperation();
     for (let option of this.operation.options) {
-      if (option.type == 'Schimbare de certificat') {
+      if (option.type == 'Contract vanzare-cumparare') {
         this.optionNecessaryDocumentsList = await this.operationService.getOptionNecessaryDocuments(option.id).toPromise();
+        this.completedContract = await this.docService.getContractFromOperation(this.operation.id).toPromise();
         this.option = option;
         this.getTaxes();
         await this.checkLoadedDocuments();
-        break;
+      }
+      if(option.type == 'Fiscal'){
+        this.fiscalOption = option;
       }
     }
   }
 
   getTaxes(){
-      this.optionRegistrationTaxes.push("Plata certificat de inmatriculare");
+      this.optionRegistrationTaxes.push("Plata fiscal pentru contractul de vanzare cumparare");
   }
 
   uploadDocument(event: any) {
     const files: File[] = Array.from(event.target.files);
     const filesDataURL: Promise<unknown[]> = Promise.all(files.map((f) => this.readAsDataURL(f)));
-    filesDataURL.then(async () => {
-      await this.docService.saveOptionDocument(this.operation.id,
+    filesDataURL.then(() => {
+      this.docService.saveOptionDocument(this.operation.id,
         this.option.id,this.selectedDocument.id, event.target.files[0]).toPromise();
-      await this.checkLoadedDocuments();
+      this.checkLoadedDocuments();
     });
   }
 
@@ -80,6 +86,5 @@ export class CertificateChangeComponent implements OnInit {
       this.isDocUploadedList[necDoc.id] = docName;
     }
   }
-
 
 }

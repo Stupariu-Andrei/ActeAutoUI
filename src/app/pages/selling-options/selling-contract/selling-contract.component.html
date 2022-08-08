@@ -10,7 +10,14 @@
     <div class="container">
       <div class="numere" *ngIf="option != null">
         <h2>{{option.type}}</h2>
-        <h4>Acte necesare pentru acest dosar:</h4>
+        <h4>Completarea contractului de vanzare-cumparare si cerere fiscal: </h4><br>
+        <div *ngIf="completedContract != null">
+          <button mat-button disabled="true">Contractul {{completedContract.contract_name}} a fost completat.</button>
+        </div>
+        <div *ngIf="completedContract == null">
+          <button mat-button routerLink="contract">Completeaza contract</button>
+        </div>
+        <h4>Acte necesare pentru validarea contractului si primire fiscal:</h4>
         <ul *ngFor="let optionNecessaryDocument of optionNecessaryDocumentsList">
           <li *ngIf="isDocUploadedList[optionNecessaryDocument.id] == ''"
             (click)="getSelectedDocumentId(optionNecessaryDocument)">
@@ -24,6 +31,10 @@
               incarcat.</button>
           </li>
         </ul>
+        <h4 *ngIf="fiscalOption">{{fiscalOption.type}} pentru contractul de vanzare-cumparare</h4>
+        <li *ngIf="fiscalOption">{{fiscalOption.progress}} pentru verificarea contractului. Fiscalul va aparea odata ce
+          va fi solutionat</li>
+
         <h4>{{option.type}} plati si taxe:</h4>
         <ul *ngFor="let taxes of optionRegistrationTaxes">
           <li>{{taxes}}

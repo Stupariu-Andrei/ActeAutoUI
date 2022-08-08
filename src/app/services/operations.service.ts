@@ -94,14 +94,14 @@ export class OperationsService {
     return this.httpClient.post<Operation>(url,[operation_id, option_id, registration_option_id]);
   }
 
-  getRegistrationType(operation_id: any, option_id: any): Observable<RegistrationOption>{
+  getRegistrationOption(operation_id: any, option_id: any): Observable<any>{
     const url = `http://localhost:8086/api/operations/registration-option/get?operation_id=${operation_id}&option_id=${option_id}`;
     const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
     const requestOptions: Object = {
       headers: headers,
       responseType: 'text'
     }
-    return this.httpClient.get<RegistrationOption>(url, requestOptions);
+    return this.httpClient.get<any>(url, requestOptions);
   }
 
   getRegistrationOptions(): Observable<RegistrationOption[]>{
@@ -111,14 +111,55 @@ export class OperationsService {
   }
 
   getOptionRegistrationNecessaryDocuments(registration_option_id: any){
-    const url = `http://localhost:8086/api/operations/registration-options/get/necessary-documents?registration_option_id=${registration_option_id}`;
+    const url = `http://localhost:8087/api/necessary-documents/all/registration-option?registration_option_id=${registration_option_id}`;
     return this.httpClient.get<NecessaryDocuments[]>(url);
   }
 
   prepareNecessaryDocumentsForRegistration(operation_id: any, option_id: any, necessaryDocumentsList: NecessaryDocuments[]){
-    const url = `http://localhost:8086/api/operations/registration-options/prepare/necessary-documents?operation_id=${operation_id}&option_id=${option_id}`
+    const url = `http://localhost:8087/api/necessary-documents/prepare/registration-option?operation_id=${operation_id}&option_id=${option_id}`
 
     return this.httpClient.post<Operation>(url,necessaryDocumentsList);
+  }
+
+  getPreparedRegistrationOptionNecessaryDocuments(operation_id: any, option_id: any){
+    const url = `http://localhost:8087/api/necessary-documents/registration-option?operation_id=${operation_id}&option_id=${option_id}`;
+    return this.httpClient.get<any[]>(url);
+  }
+
+  checkRegistrationLoadedDocument(operation_id: any, option_id: any, necessary_document_id: any){
+    const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+    const requestOptions: Object = {
+      headers: headers,
+      responseType: 'text'
+    }
+    const url = `http://localhost:8087/api/necessary-documents/check/registration-option?operation_id=${operation_id}&option_id=${option_id}&necessary_document_id=${necessary_document_id}`;
+    return this.httpClient.get<string>(url, requestOptions);
+  }
+
+  getOptionNecessaryDocuments(option_id: any){
+    const url = `http://localhost:8087/api/necessary-documents/all/option?option_id=${option_id}`;
+    return this.httpClient.get<NecessaryDocuments[]>(url);
+  }
+
+  prepareNecessaryDocumentsForOption(operation_id: any, option_id: any, necessaryDocumentsList: NecessaryDocuments[]){
+    const url = `http://localhost:8087/api/necessary-documents/prepare/option?operation_id=${operation_id}&option_id=${option_id}`
+
+    return this.httpClient.post<Operation>(url,necessaryDocumentsList);
+  }
+
+  getPreparedOptionNecessaryDocuments(option_id: any){
+    const url = `http://localhost:8087/api/necessary-documents/option?option_id=${option_id}`;
+    return this.httpClient.get<NecessaryDocuments[]>(url);
+  }
+
+  checkOptionLoadedDocument(operation_id: any, option_id: any, necessary_document_id: any){
+    const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+    const requestOptions: Object = {
+      headers: headers,
+      responseType: 'text'
+    }
+    const url = `http://localhost:8087/api/necessary-documents/check/option?operation_id=${operation_id}&option_id=${option_id}&necessary_document_id=${necessary_document_id}`;
+    return this.httpClient.get<string>(url, requestOptions);
   }
 
 }

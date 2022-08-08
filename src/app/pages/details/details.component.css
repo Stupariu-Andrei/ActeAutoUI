@@ -64,6 +64,7 @@
 
 .user-data-container a{
   cursor: pointer;
+  color: blue;
   text-decoration: underline;
 }
 

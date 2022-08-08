@@ -9,7 +9,6 @@ import { FooterComponent } from './sharepage/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
-import { ContractComponent } from './pages/contract/contract.component';
 import { CommonModule } from '@angular/common';
 import { DocumentComponent } from './pages/document/document.component';
 import { NgxDocViewerModule } from 'ngx-doc-viewer';
@@ -17,9 +16,7 @@ import { PaymentComponent } from './pages/payment/payment.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { ModelContractComponent } from './pages/model-contract/model-contract.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-import { LoginnComponent } from './pages/loginn/loginn.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
-import { RegisterComponent } from './pages/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -41,7 +38,6 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SellingOperationComponent } from './pages/selling-operation/selling-operation.component';
 import { SellingOperationLayoutComponent } from './pages/selling-operation/selling-operation-layout/selling-operation-layout.component';
 import { PaymentLayoutComponent } from './pages/payment/payment-layout/payment-layout.component';
-import { ContractLayoutComponent } from './pages/contract/contract-layout/contract-layout.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -62,8 +58,11 @@ import { InformationGuideComponent } from './pages/information-guide/information
 import { CarRegistrationComponent } from './pages/selling-options/car-registration/car-registration.component';
 import { CertificateChangeComponent } from './pages/selling-options/certificate-change/certificate-change.component';
 import { SellingOptionChooserComponent } from './pages/selling-options/selling-option-chooser/selling-option-chooser.component';
-import { ContractCompleterComponent } from './pages/selling-options/contract-completer/contract-completer.component';
-import { ContractCompleterLayoutComponent } from './pages/selling-options/contract-completer/contract-completer-layout/contract-completer-layout.component';
+import { ContractCompleterComponent } from './pages/selling-options/selling-contract/contract-completer/contract-completer.component';
+import { ContractCompleterLayoutComponent } from './pages/selling-options/selling-contract/contract-completer/contract-completer-layout/contract-completer-layout.component';
+import { SellingContractComponent } from './pages/selling-options/selling-contract/selling-contract.component';
+import { SellingContractLayoutComponent } from './pages/selling-options/selling-contract/selling-contract-layout/selling-contract-layout.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -73,14 +72,11 @@ import { ContractCompleterLayoutComponent } from './pages/selling-options/contra
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    ContractComponent,
     DocumentComponent,
     PaymentComponent,
     DetailsComponent,
     ModelContractComponent,
-    LoginnComponent,
     UserProfileComponent,
-    RegisterComponent,
     UsertypeComponent,
     NecessaryDocumentsComponent,
     UserTypeComponent,
@@ -88,7 +84,6 @@ import { ContractCompleterLayoutComponent } from './pages/selling-options/contra
     SellingOperationComponent,
     SellingOperationLayoutComponent,
     PaymentLayoutComponent,
-    ContractLayoutComponent,
     ProfileComponent,
     ProfileLayoutComponent,
     PricingComponent,
@@ -99,7 +94,10 @@ import { ContractCompleterLayoutComponent } from './pages/selling-options/contra
     CertificateChangeComponent,
     SellingOptionChooserComponent,
     ContractCompleterComponent,
-    ContractCompleterLayoutComponent
+    ContractCompleterLayoutComponent,
+    SellingContractComponent,
+    SellingContractLayoutComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import { saveAs } from 'file-saver';
 import { Contract } from 'src/app/models/contract';
 import { LoadDocumentsComponent } from './load-documents/load-documents.component';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-details',
@@ -24,7 +25,7 @@ export class DetailsComponent implements OnInit {
   searchedOperation: any;
 
   constructor(public dialog: MatDialog, private operationsService: OperationsService,
-    private docService: DocService, private router: Router) { }
+    private docService: DocService, private router: Router, private authService:AuthService) { }
 
   async ngOnInit(): Promise<void> {
     this.operationsList = await this.operationsService.getOperationsList().toPromise();
@@ -43,15 +44,19 @@ export class DetailsComponent implements OnInit {
 
   selectOption(option: Option) {
     if (option.type.includes('Contract')) {
-      this.router.navigate(['contract']);
+      this.router.navigate(['details/selling-contract']);
     }
 
     if (option.type.includes('Inmatriculare')) {
-      this.router.navigate(['car-registration']);
+      this.router.navigate(['details/car-registration']);
     }
 
     if(option.type.includes('Schimbare')){
-      this.router.navigate(['certificate-change']);
+      this.router.navigate(['details/certificate-change']);
+    }
+
+    if(option.type.includes('Fiscal')){
+      this.router.navigate(['details/selling-contract']);
     }
   }
 
@@ -62,7 +67,7 @@ export class DetailsComponent implements OnInit {
   }
 
   async downloadDoc(operation: Operation) {
-    var contract = await this.docService.getContractIdFromOperation(operation.id).toPromise() as Contract;
+    var contract = await this.docService.getContractFromOperation(operation.id).toPromise() as Contract;
 
     this.docService.downloadDoc(operation.id).subscribe(
       blob => saveAs(blob, contract.contract_name),
@@ -72,7 +77,7 @@ export class DetailsComponent implements OnInit {
   }
 
   async downloadFiscalDoc(operation: Operation) {
-    var contract = await this.docService.getContractIdFromOperation(operation.id).toPromise() as Contract;
+    var contract = await this.docService.getContractFromOperation(operation.id).toPromise() as Contract;
 
     this.docService.downloadFiscalDoc(contract.id).subscribe(
       blob => saveAs(blob, "Fiscal " + contract.contract_name),

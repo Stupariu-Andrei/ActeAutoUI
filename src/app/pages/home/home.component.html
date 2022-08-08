@@ -34,11 +34,11 @@
           <li><i class="bi bi-check-circle"></i>Vizualizare model contract</li>
           <li><i class="bi bi-check-circle"></i>Completare si generare contract</li>
           <li><i class="bi bi-check-circle"></i>Cerere fiscal</li>
-          <li><i class="bi bi-check-circle"></i>Programare numere rosii</li>
-          <li><i class="bi bi-check-circle"></i>Programare numere negre</li>
+          <li><i class="bi bi-check-circle"></i>Inmatriculare</li>
+          <li><i class="bi bi-check-circle"></i>Schimbare de certificat</li>
           <li><i class="bi bi-check-circle"></i>Intocmire asigurare</li>
           <p>Ai cont? <a routerLink="" (click)="goToPage('login')"> Intra in cont</a></p>
-          <p>Nu ai inca un cont? <a [routerLink]="" (click)="goToPage('register')"> Inregistreaza-te</a></p>
+          <p>Nu ai inca un cont? <a [routerLink]="" (click)="goToPage('login')"> Inregistreaza-te</a></p>
         </ul>
 
       </div>
@@ -196,17 +196,14 @@
 
   <section id="contact" class="contact">
     <div class="container">
-
       <div class="section-title">
         <h2>Contact</h2>
         <p>Aveti nevoie de ajutor?</p>
         <p>Nu ezitati sa ne contactati.</p>
       </div>
     </div>
-
     <div class="container">
       <div class="row mt-5">
-
         <div class="col-lg-4">
           <div class="info">
             <div class="address">
@@ -214,13 +211,11 @@
               <h4>Location:</h4>
               <p>A108 Adam Street, New York, NY 535022</p>
             </div>
-
             <div class="email">
               <i class="bi bi-envelope"></i>
               <h4>Email:</h4>
               <p>info@example.com</p>
             </div>
-
             <div class="phone">
               <i class="bi bi-phone"></i>
               <h4>Call:</h4>
@@ -229,8 +224,7 @@
           </div>
         </div>
         <div class="col-lg-8 mt-5 mt-lg-0">
-
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+          <form class="php-email-form" [formGroup]="contactForm">
             <div class="row">
               <div class="col-md-6 form-group">
                 <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -252,11 +246,8 @@
             </div>
             <div class="text-center btn-message"><button type="submit">Send Message</button></div>
           </form>
-
         </div>
-
       </div>
-
     </div>
   </section>
 </main>

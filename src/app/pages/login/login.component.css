@@ -1,0 +1,168 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+* {
+	box-sizing: border-box;
+}
+
+.container {
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 80%;
+  height: 75%;
+	max-width: 100%;
+	min-height: 480px;
+}
+
+
+.login-button {
+	color: #333;
+	font-size: 14px;
+	text-decoration: none;
+  background-color: var(--primary-color);
+	margin: 15px 0;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.login-button:hover{
+	color: white;
+	text-decoration: none;
+  background-color: var(--primary-color);
+}
+
+.register-button {
+	color: #333;
+	font-size: 14px;
+	text-decoration: none;
+  background-color: var(--primary-color);
+	margin: 15px 0;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.register-button:hover{
+	color: white;
+	text-decoration: none;
+  background-color: var(--primary-color);
+}
+
+.overlay-panel {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+  padding: 0 40px;
+	text-align: center;
+  top: 0;
+	height: 100%;
+	width: 82%;
+
+}
+
+.overlay-left {
+  text-align: center;
+  left: 0;
+	transform: translateX(-20%);
+}
+
+.overlay-slide-right{
+  right: 0;
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  background-color:var(--primary-color);
+	z-index: 10;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.overlay-right {
+	right: 0;
+	transform: translateX(20%);
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.overlay-right h2{
+	margin-top: 3%;
+}
+
+.overlay-slide-left{
+  left: 0;
+  height: 100%;
+  width: 50%;
+  background-color:var(--primary-color);
+	z-index: 10;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.register-link{
+  margin-top: 5%;
+}
+
+.social-link{
+  align-items: center;
+  justify-content: center;
+}
+
+.social-link a{
+  font-size: 30px;
+  margin: 0 20px 30px;
+  text-decoration: none;
+  color: black;
+}
+
+.social-link a:hover{
+  font-size: 40px;
+  cursor: pointer;
+  margin: 0 20px 30px;
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+mat-form-field{
+  width: 25%;
+}
+
+.logo {
+  transition: all 0.5s;
+  margin-top: 1%;
+  padding: 10px 0;
+  top: 20;
+}
+.logo {
+  font-size: 28px;
+  margin-top: 5%;
+  text-align: center;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.logo a {
+  color: #111;
+  text-decoration: underline;
+}
+
+.logo a span {
+  color: var(--primary-color);
+}
+
+.sign-button{
+  background-color: white;
+  border-radius: 20px;
+}
+
+.sign-button:hover{
+  color: var(--primary-color);
+  border-radius: 20px;
+}
+
+

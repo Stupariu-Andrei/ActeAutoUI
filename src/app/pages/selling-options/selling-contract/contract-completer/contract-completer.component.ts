@@ -1,19 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
 import { Address } from 'src/app/models/address';
+import { Operation } from 'src/app/models/operation';
 import { Option } from 'src/app/models/option';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { DocService } from 'src/app/services/doc.service';
 import { OperationsService } from 'src/app/services/operations.service';
+import { SellingOptionChooserComponent } from '../../selling-option-chooser/selling-option-chooser.component';
 
 @Component({
-  selector: 'app-contract',
-  templateUrl: './contract.component.html',
-  styleUrls: ['./contract.component.css']
+  selector: 'app-contract-completer',
+  templateUrl: './contract-completer.component.html',
+  styleUrls: ['./contract-completer.component.css']
 })
-export class ContractComponent implements OnInit {
+export class ContractCompleterComponent implements OnInit {
+
 
   buyer: User;
   buyerAdresa: Address;
@@ -39,7 +43,7 @@ export class ContractComponent implements OnInit {
   };
 
   constructor(private docService: DocService, private authService: AuthService,
-    private operationService: OperationsService, private router: Router) {
+    private operationService: OperationsService, private router: Router, public dialog: MatDialog) {
 
   }
 
@@ -98,7 +102,7 @@ export class ContractComponent implements OnInit {
     this.users.push(this.buyer);
 
     if(this.checkedFiscal){
-      var option = this.currentOptions.find(op => op.id == 2)!;
+      let option = this.currentOptions.find(op => op.type == "Fiscal")!;
       option.progress = "In asteptare";
       this.operationService.getCurrentOperation().options.push(option);
       await this.operationService.saveOperationOption(this.operationService.getCurrentOperation().id, option.id, option.progress).toPromise();
@@ -108,13 +112,13 @@ export class ContractComponent implements OnInit {
       this.docService.createDoc(this.users, this.operationService.getCurrentOperation().id).subscribe(
         data => {
           data = this.users;
-          if(this.authService.getCurrentUser()){
-            for(var option of this.operationService.getCurrentOperation().options){
-              if(option.id == 1){
-                this.operationService.updateOptionProgress(this.operationService.getCurrentOperation().id, option.id, "Complete").toPromise()
-              }
-            }
-          }
+          // if(this.authService.getCurrentUser()){
+          //   for(var option of this.operationService.getCurrentOperation().options){
+          //     if(option.type.includes('Contract')){
+          //       this.operationService.updateOptionProgress(this.operationService.getCurrentOperation().id, option.id, "Complete").toPromise()
+          //     }
+          //   }
+          // }
         },
         error => console.log(error)
       )
@@ -133,11 +137,30 @@ export class ContractComponent implements OnInit {
     //   )
     // }
 
+  }
+
+  async openDialogForChoosingOperationToStart() {
+
     if(this.authService.getCurrentUser()){
-      this.router.navigate(["/car-registration"]);
+      await this.sendContractDetails();
+
+      const operation = this.operationService.getCurrentOperation();
+      let remainingOptions = [];
+
+      for(let option of operation.options){
+        if(option.type != "Contract vanzare-cumparare" && option.type != "Fiscal"){
+          remainingOptions.push(option);
+        }
+      }
+
+      const dialogRef = this.dialog.open<SellingOptionChooserComponent>(SellingOptionChooserComponent, {
+        width: '400px',
+        data: remainingOptions
+      });
     }else{
       this.router.navigate(["/payment"]);
     }
+
   }
 
 }

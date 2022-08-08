@@ -6,6 +6,4 @@ export class Operation{
     options: Option[] = new Array<Option>();
     progress: string;
     user_id: any;
-    registration_type: any;
-
 }

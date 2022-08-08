@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DOCUMENT, ViewportScroller } from '@angular/common';
 import { PageScrollInstance, PageScrollService } from 'ngx-page-scroll-core';
 import { IdentityVerificationComponent } from '../identity-verification/identity-verification.component';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ import { IdentityVerificationComponent } from '../identity-verification/identity
 export class HomeComponent implements OnInit, AfterViewInit {
 
   public loggedIn: boolean;
+  contactForm: FormGroup = new FormGroup({});
 
   constructor(private dialog: MatDialog, private authService: AuthService,
     private pageScrollService: PageScrollService, @Inject(DOCUMENT) private document: any,

@@ -27,7 +27,6 @@ export class SellingOperationComponent implements OnInit {
   async ngOnInit() {
     this.operation = new Operation();
     this.options = await this.operationsService.retrieveOptions().toPromise();
-    console.log(this.options);
     for (const option of this.options) {
       if(option.type == 'Fiscal'){
         this.options = this.options.filter(item => item.type != 'Fiscal');
@@ -49,6 +48,8 @@ export class SellingOperationComponent implements OnInit {
           this.operation.options.push(option);
       }
     }
+
+    console.log(this.operation);
   }
 
   async saveOperation() {
@@ -59,8 +60,17 @@ export class SellingOperationComponent implements OnInit {
 
     this.operationsService.setCurrentOperation(this.operation);
 
-    this.userAllowedOperations = this.userAllowedOperations - 1;
+    if(this.userAllowedOperations > 0){
+      this.userAllowedOperations = this.userAllowedOperations - 1;
+    }
+
     await this.authService.updateUserOperationsCounter(this.authService.getCurrentUser().id, this.userAllowedOperations).toPromise();
+
+    for(let option of this.operation.options){
+      let optionNecessaryDocumentsList = await this.operationsService.getOptionNecessaryDocuments(option.id).toPromise();
+      await this.operationsService.prepareNecessaryDocumentsForOption(this.operation.id, option.id, optionNecessaryDocumentsList).toPromise();
+    }
+
 
   }
 
