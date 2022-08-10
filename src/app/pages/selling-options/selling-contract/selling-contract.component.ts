@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as saveAs from 'file-saver';
+import { Contract } from 'src/app/models/contract';
 import { NecessaryDocuments } from 'src/app/models/necessary-documents';
 import { Operation } from 'src/app/models/operation';
 import { Option } from 'src/app/models/option';
@@ -85,6 +87,16 @@ export class SellingContractComponent implements OnInit {
       let docName = await this.operationService.checkOptionLoadedDocument(this.operation.id, this.option.id, necDoc.id).toPromise();
       this.isDocUploadedList[necDoc.id] = docName;
     }
+  }
+
+  async downloadDoc(operation: Operation) {
+    var contract = await this.docService.getContractFromOperation(operation.id).toPromise() as Contract;
+
+    this.docService.downloadDoc(operation.id).subscribe(
+      blob => saveAs(blob, contract.contract_name),
+      error => console.log(error)
+    );
+
   }
 
 }

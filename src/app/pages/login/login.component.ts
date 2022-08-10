@@ -54,7 +54,6 @@ export class LoginComponent implements OnInit {
     this.user.password = this.loginForm.controls['password'].value;
 
     this.loggedIn = await this.authService.loginUser(this.user).toPromise();
-    console.log(this.loggedIn);
     if (this.loggedIn) {
       this.user = await this.authService.getUserByUsername(this.loginForm.controls['username'].value).toPromise();
       this.authService.setLoggedIn(this.loggedIn);

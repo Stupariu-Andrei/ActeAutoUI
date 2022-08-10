@@ -48,8 +48,6 @@ export class SellingOperationComponent implements OnInit {
           this.operation.options.push(option);
       }
     }
-
-    console.log(this.operation);
   }
 
   async saveOperation() {

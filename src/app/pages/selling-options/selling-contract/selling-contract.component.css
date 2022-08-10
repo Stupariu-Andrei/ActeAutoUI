@@ -50,14 +50,12 @@ button{
   display: block;
   width: 100%;
   font-size: 20px;
-  margin-bottom: 3%;
 }
 
 button:hover{
   display: block;
   width: 100%;
   font-size: 20px;
-  margin-bottom: 3%;
   color: var(--primary-color);
 }
 

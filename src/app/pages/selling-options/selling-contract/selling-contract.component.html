@@ -13,6 +13,7 @@
         <h4>Completarea contractului de vanzare-cumparare si cerere fiscal: </h4><br>
         <div *ngIf="completedContract != null">
           <button mat-button disabled="true">Contractul {{completedContract.contract_name}} a fost completat.</button>
+          <button mat-button (click)="downloadDoc(operation)">Descarca</button>
         </div>
         <div *ngIf="completedContract == null">
           <button mat-button routerLink="contract">Completeaza contract</button>
